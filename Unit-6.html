@@ -1,0 +1,1476 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Unit-6: : The Storyteller &#8212; Lab Manual - Data Analysis and Visualisation - Class IX</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit-6';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Unit 5: The Classifier" href="Unit-5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit-1.html">Unit 1: The Digital Lab Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-2.html">Unit 2: The Data Detective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-3.html">Unit 3: The Great Equalizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-4.html">Unit 4: The Predictor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-5.html">Unit 5: The Classifier</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit-6: : The Storyteller</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FUnit-6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit-6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit-6: : The Storyteller</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-1-creating-and-viewing-a-small-geography-dataset">Activity 6.1: Creating and Viewing a Small Geography Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-2-plotting-locations-on-a-simple-graph">Activity 6.2: Plotting Locations on a Simple Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-3-visualizing-the-same-points-on-an-actual-map">Activity 6.3: Visualizing the Same Points on an Actual Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-4-finding-a-story-inside-the-map">Activity 6.4: Finding a Story Inside the Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-6-the-storyteller">
+<h1>Unit-6: : The Storyteller<a class="headerlink" href="#unit-6-the-storyteller" title="Permalink to this heading">#</a></h1>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
+<p>By the end of this unit, students will be capable of:</p>
+<ul class="simple">
+<li><p>Identifying latitude and longitude as coordinates of location</p></li>
+<li><p>Plotting geographic data on a coordinate graph</p></li>
+<li><p>Visualizing locations on an interactive map</p></li>
+<li><p>Describing spatial patterns and constructing a simple data-based story</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>For thousands of years, people have tried to understand the world by drawing maps. Ancient astronomers used careful measurements of shadows and star positions to mark directions. Travelers and scholars noted the locations of rivers, mountains, and trade routes. Temple builders used precise geometry to align structures with the sunrise or certain stars. All of these are examples of using space and location to discover patterns.</p>
+<p>Today, we can do something similar using computers. When you place data on a map, small patterns become clear. You can see how places relate to each other, how far they are, or how they form clusters. Maps help turn numbers into a story that you can see.</p>
+<p>In this unit, you will take simple geographic data, plot it on a graph, and then place it on a real map of India. This lets you experience how location data can tell a meaningful story.</p>
+</section>
+<section id="activity-6-1-creating-and-viewing-a-small-geography-dataset">
+<h2>Activity 6.1: Creating and Viewing a Small Geography Dataset<a class="headerlink" href="#activity-6-1-creating-and-viewing-a-small-geography-dataset" title="Permalink to this heading">#</a></h2>
+<p>We will begin with a small dataset of Indian cities. Each city has two important numbers:</p>
+<ul class="simple">
+<li><p>Latitude</p></li>
+<li><p>Longitude</p></li>
+</ul>
+<p>These two numbers act like coordinates that tell you exactly where the city is on Earth. Latitude tells you how far north or south a place is. Longitude tells you how far east or west a place is.</p>
+<p>Let us create a small DataFrame of ten cities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Delhi&quot;</span><span class="p">,</span> <span class="s2">&quot;Mumbai&quot;</span><span class="p">,</span> <span class="s2">&quot;Chennai&quot;</span><span class="p">,</span> <span class="s2">&quot;Kolkata&quot;</span><span class="p">,</span> <span class="s2">&quot;Bengaluru&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;Jaipur&quot;</span><span class="p">,</span> <span class="s2">&quot;Patna&quot;</span><span class="p">,</span> <span class="s2">&quot;Shillong&quot;</span><span class="p">,</span> <span class="s2">&quot;Kochi&quot;</span><span class="p">,</span> <span class="s2">&quot;Ahmedabad&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Latitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">28.7041</span><span class="p">,</span> <span class="mf">19.0760</span><span class="p">,</span> <span class="mf">13.0827</span><span class="p">,</span> <span class="mf">22.5726</span><span class="p">,</span> <span class="mf">12.9716</span><span class="p">,</span>
+                 <span class="mf">26.9124</span><span class="p">,</span> <span class="mf">25.5941</span><span class="p">,</span> <span class="mf">25.5788</span><span class="p">,</span> <span class="mf">9.9312</span><span class="p">,</span> <span class="mf">23.0225</span><span class="p">],</span>
+    <span class="s2">&quot;Longitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">77.1025</span><span class="p">,</span> <span class="mf">72.8777</span><span class="p">,</span> <span class="mf">80.2707</span><span class="p">,</span> <span class="mf">88.3639</span><span class="p">,</span> <span class="mf">77.5946</span><span class="p">,</span>
+                  <span class="mf">75.7873</span><span class="p">,</span> <span class="mf">85.1376</span><span class="p">,</span> <span class="mf">91.8933</span><span class="p">,</span> <span class="mf">76.2673</span><span class="p">,</span> <span class="mf">72.5714</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Delhi</td>
+      <td>28.7041</td>
+      <td>77.1025</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Mumbai</td>
+      <td>19.0760</td>
+      <td>72.8777</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Chennai</td>
+      <td>13.0827</td>
+      <td>80.2707</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Kolkata</td>
+      <td>22.5726</td>
+      <td>88.3639</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Bengaluru</td>
+      <td>12.9716</td>
+      <td>77.5946</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Jaipur</td>
+      <td>26.9124</td>
+      <td>75.7873</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Patna</td>
+      <td>25.5941</td>
+      <td>85.1376</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Shillong</td>
+      <td>25.5788</td>
+      <td>91.8933</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Kochi</td>
+      <td>9.9312</td>
+      <td>76.2673</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Ahmedabad</td>
+      <td>23.0225</td>
+      <td>72.5714</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Each row is one city and its position on the globe.</p>
+</section>
+<section id="activity-6-2-plotting-locations-on-a-simple-graph">
+<h2>Activity 6.2: Plotting Locations on a Simple Graph<a class="headerlink" href="#activity-6-2-plotting-locations-on-a-simple-graph" title="Permalink to this heading">#</a></h2>
+<p>Latitude and longitude are numbers, so you can plot them on a simple x-y graph. Longitude can be on the x axis and latitude on the y axis. This will show you where the cities lie relative to each other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Longitude&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cities Plotted as Points&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bb9335e923ccfca8b97d085f287228f2c8bd03f568c30133f95882fee1ed89ed.png" src="_images/bb9335e923ccfca8b97d085f287228f2c8bd03f568c30133f95882fee1ed89ed.png" />
+</div>
+</div>
+<p>You will see a group of points, but it will not look like the map of India. The shape may seem stretched or rotated. This happens because a plain graph treats latitude and longitude as simple numbers instead of coordinates on a curved Earth.</p>
+<p>This plot is still useful because it shows which cities are north or south, and which are east or west, but it does not show the true shape of our beautiful country.</p>
+<p>To see the correct shape, we need a real map.</p>
+</section>
+<section id="activity-6-3-visualizing-the-same-points-on-an-actual-map">
+<h2>Activity 6.3: Visualizing the Same Points on an Actual Map<a class="headerlink" href="#activity-6-3-visualizing-the-same-points-on-an-actual-map" title="Permalink to this heading">#</a></h2>
+<p>We will use a simple mapping library called folium. It allows us to place markers on an interactive map. Now create a map centered roughly on India and add markers for each city.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">folium</span>
+
+<span class="c1"># Create a map centered on India</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">22.0</span><span class="p">,</span> <span class="mf">80.0</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Add city markers</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+        <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Latitude&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">]],</span>
+        <span class="n">popup</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;City&quot;</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_4cd490d5413dc2b7d657ac98b64dc39c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_4cd490d5413dc2b7d657ac98b64dc39c&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_4cd490d5413dc2b7d657ac98b64dc39c = L.map(
+                &quot;map_4cd490d5413dc2b7d657ac98b64dc39c&quot;,
+                {
+                    center: [22.0, 80.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_593a7ad8167bcd32fe5f8a5128c5298a = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_593a7ad8167bcd32fe5f8a5128c5298a.addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+            var marker_6e305eeb8a78cf766cdbc69f0190e080 = L.marker(
+                [28.7041, 77.1025],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_9c86a7880ac2267fce9767c55d51f90a = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_8204654de1086619c721a9a5e7d21daa = $(`&lt;div id=&quot;html_8204654de1086619c721a9a5e7d21daa&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Delhi&lt;/div&gt;`)[0];
+                popup_9c86a7880ac2267fce9767c55d51f90a.setContent(html_8204654de1086619c721a9a5e7d21daa);
+            
+        
+
+        marker_6e305eeb8a78cf766cdbc69f0190e080.bindPopup(popup_9c86a7880ac2267fce9767c55d51f90a)
+        ;
+
+        
+    
+    
+            var marker_978f92fbe6628fa100c2800194108f0b = L.marker(
+                [19.076, 72.8777],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_6601b2e1f7d053863caad4febc2a4f88 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_922626c81b5c09c6ecd5d9cc97f3066f = $(`&lt;div id=&quot;html_922626c81b5c09c6ecd5d9cc97f3066f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Mumbai&lt;/div&gt;`)[0];
+                popup_6601b2e1f7d053863caad4febc2a4f88.setContent(html_922626c81b5c09c6ecd5d9cc97f3066f);
+            
+        
+
+        marker_978f92fbe6628fa100c2800194108f0b.bindPopup(popup_6601b2e1f7d053863caad4febc2a4f88)
+        ;
+
+        
+    
+    
+            var marker_eed2388747232321f671560e1e04eee9 = L.marker(
+                [13.0827, 80.2707],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_ca023c0267eb2a992f6d6e890d2af4e4 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_91b96acc9fd1b86126868ca20fb80238 = $(`&lt;div id=&quot;html_91b96acc9fd1b86126868ca20fb80238&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Chennai&lt;/div&gt;`)[0];
+                popup_ca023c0267eb2a992f6d6e890d2af4e4.setContent(html_91b96acc9fd1b86126868ca20fb80238);
+            
+        
+
+        marker_eed2388747232321f671560e1e04eee9.bindPopup(popup_ca023c0267eb2a992f6d6e890d2af4e4)
+        ;
+
+        
+    
+    
+            var marker_4b0c0e3bb214ec70c0d81c0097b02d9b = L.marker(
+                [22.5726, 88.3639],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_43459be0b0d9de7cf768ecd861715a19 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_41cf0aa04abfbd1d16b937cbda13654f = $(`&lt;div id=&quot;html_41cf0aa04abfbd1d16b937cbda13654f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Kolkata&lt;/div&gt;`)[0];
+                popup_43459be0b0d9de7cf768ecd861715a19.setContent(html_41cf0aa04abfbd1d16b937cbda13654f);
+            
+        
+
+        marker_4b0c0e3bb214ec70c0d81c0097b02d9b.bindPopup(popup_43459be0b0d9de7cf768ecd861715a19)
+        ;
+
+        
+    
+    
+            var marker_f3c553f5f3fe410c06097d51cd80da2e = L.marker(
+                [12.9716, 77.5946],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_24ff52bd9e6364b2832377176ee7800a = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_143c9a9988a65d1b58aa66e1521f98f5 = $(`&lt;div id=&quot;html_143c9a9988a65d1b58aa66e1521f98f5&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Bengaluru&lt;/div&gt;`)[0];
+                popup_24ff52bd9e6364b2832377176ee7800a.setContent(html_143c9a9988a65d1b58aa66e1521f98f5);
+            
+        
+
+        marker_f3c553f5f3fe410c06097d51cd80da2e.bindPopup(popup_24ff52bd9e6364b2832377176ee7800a)
+        ;
+
+        
+    
+    
+            var marker_296e97995a3140fafd50ad9859b09760 = L.marker(
+                [26.9124, 75.7873],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_5528c2c2317cf48fcaeb43dd179b4e38 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_62b66b2ce606f51a38332e369fd725c5 = $(`&lt;div id=&quot;html_62b66b2ce606f51a38332e369fd725c5&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Jaipur&lt;/div&gt;`)[0];
+                popup_5528c2c2317cf48fcaeb43dd179b4e38.setContent(html_62b66b2ce606f51a38332e369fd725c5);
+            
+        
+
+        marker_296e97995a3140fafd50ad9859b09760.bindPopup(popup_5528c2c2317cf48fcaeb43dd179b4e38)
+        ;
+
+        
+    
+    
+            var marker_7f5882b98435aa5c7b4b666af30e68d0 = L.marker(
+                [25.5941, 85.1376],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_85cb453ed54efa803d026019009708f2 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_7da870f31280de92bda3cf2a744e688f = $(`&lt;div id=&quot;html_7da870f31280de92bda3cf2a744e688f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Patna&lt;/div&gt;`)[0];
+                popup_85cb453ed54efa803d026019009708f2.setContent(html_7da870f31280de92bda3cf2a744e688f);
+            
+        
+
+        marker_7f5882b98435aa5c7b4b666af30e68d0.bindPopup(popup_85cb453ed54efa803d026019009708f2)
+        ;
+
+        
+    
+    
+            var marker_2ac812429bfb420a7bd629ded358d2f5 = L.marker(
+                [25.5788, 91.8933],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_090e9543587669056770e48c432abc61 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_128cd30bb133e80eb4792d68de896875 = $(`&lt;div id=&quot;html_128cd30bb133e80eb4792d68de896875&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Shillong&lt;/div&gt;`)[0];
+                popup_090e9543587669056770e48c432abc61.setContent(html_128cd30bb133e80eb4792d68de896875);
+            
+        
+
+        marker_2ac812429bfb420a7bd629ded358d2f5.bindPopup(popup_090e9543587669056770e48c432abc61)
+        ;
+
+        
+    
+    
+            var marker_f1ebdd7b1ec3aad1b8707fe748b52526 = L.marker(
+                [9.9312, 76.2673],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_e6cdb43dd8c8b6c32c7642de5c558b7e = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_90d48a6e74af366ccca5f7325819806d = $(`&lt;div id=&quot;html_90d48a6e74af366ccca5f7325819806d&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Kochi&lt;/div&gt;`)[0];
+                popup_e6cdb43dd8c8b6c32c7642de5c558b7e.setContent(html_90d48a6e74af366ccca5f7325819806d);
+            
+        
+
+        marker_f1ebdd7b1ec3aad1b8707fe748b52526.bindPopup(popup_e6cdb43dd8c8b6c32c7642de5c558b7e)
+        ;
+
+        
+    
+    
+            var marker_65227b5dfd5bc30a2bc3a1677edfb8a0 = L.marker(
+                [23.0225, 72.5714],
+                {}
+            ).addTo(map_4cd490d5413dc2b7d657ac98b64dc39c);
+        
+    
+        var popup_a453957c141cf84d625f9065dc740647 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_85e0c8298dc552564055860c53163ba7 = $(`&lt;div id=&quot;html_85e0c8298dc552564055860c53163ba7&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Ahmedabad&lt;/div&gt;`)[0];
+                popup_a453957c141cf84d625f9065dc740647.setContent(html_85e0c8298dc552564055860c53163ba7);
+            
+        
+
+        marker_65227b5dfd5bc30a2bc3a1677edfb8a0.bindPopup(popup_a453957c141cf84d625f9065dc740647)
+        ;
+
+        
+    
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+<p>Now you will see the cities placed on a real, correctly shaped map of India. The distances, directions, and relative positions make more sense. This is the power of geographic visualization.</p>
+</section>
+<section id="activity-6-4-finding-a-story-inside-the-map">
+<h2>Activity 6.4: Finding a Story Inside the Map<a class="headerlink" href="#activity-6-4-finding-a-story-inside-the-map" title="Permalink to this heading">#</a></h2>
+<p>A map is more than a picture. It helps you notice relationships and patterns. Take a moment to look at the map and think about what it shows.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>Which cities are farthest north</p></li>
+<li><p>Which ones are close to the sea</p></li>
+<li><p>Which ones lie in the eastern region of India</p></li>
+<li><p>Which ones are clustered in central India</p></li>
+</ul>
+<p>These observations help you form a story about the geography of the country. Data placed on a map often reveals things that are hard to see in a table.</p>
+<p>You can print the DataFrame again if you want to look at the numbers.</p>
+</section>
+<section id="practice-exercises">
+<h2>Practice Exercises<a class="headerlink" href="#practice-exercises" title="Permalink to this heading">#</a></h2>
+<p>Try these exercises to strengthen your understanding. Hints and solutions are provided below.</p>
+<ol class="arabic simple">
+<li><p>Add two more cities of your choice to the DataFrame and plot them on the map. <em>Hint: Add two new rows with latitude and longitude.</em></p></li>
+<li><p>Create a map that shows only the southern cities. <em>Hint: Filter cities with latitude less than 15.</em></p></li>
+<li><p>Find which city in the list is farthest north and farthest south. <em>Hint: Use <code class="docutils literal notranslate"><span class="pre">df[&quot;Latitude&quot;].max()</span></code> and <code class="docutils literal notranslate"><span class="pre">df[&quot;Latitude&quot;].min()</span></code>.</em></p></li>
+<li><p>Compute the simple distance between two cities using the normal distance formula. <em>Hint: Use <code class="docutils literal notranslate"><span class="pre">(lat1</span> <span class="pre">-</span> <span class="pre">lat2)**2</span> <span class="pre">+</span> <span class="pre">(lon1</span> <span class="pre">-</span> <span class="pre">lon2)**2</span></code>.</em></p></li>
+<li><p>Try centering the folium map on another region, such as the northeast, and place the same city markers on the new map. <em>Hint: Change the location parameter when creating the map. Also, when you create a new map object, you must add markers again. Folium does not automatically copy them over.</em></p></li>
+</ol>
+<section id="solutions">
+<h3>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Adding new cities:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Hyderabad&quot;</span><span class="p">,</span> <span class="mf">17.3850</span><span class="p">,</span> <span class="mf">78.4867</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Pune&quot;</span><span class="p">,</span> <span class="mf">18.5204</span><span class="p">,</span> <span class="mf">73.8567</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Filtering southern cities:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">south</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">south</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>Chennai</td>
+      <td>13.0827</td>
+      <td>80.2707</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Bengaluru</td>
+      <td>12.9716</td>
+      <td>77.5946</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Kochi</td>
+      <td>9.9312</td>
+      <td>76.2673</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Northmost and southmost cities:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>City           Kochi
+Latitude      9.9312
+Longitude    76.2673
+Name: 8, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Distance between two cities:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Latitude&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">]</span>
+<span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Latitude&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">]</span>
+
+<span class="n">distance</span> <span class="o">=</span> <span class="p">((</span><span class="n">lat1</span> <span class="o">-</span> <span class="n">lat2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">lon1</span> <span class="o">-</span> <span class="n">lon2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">distance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.514240089041149
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Changing the map center:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># New map centered on the northeast</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">25.5</span><span class="p">,</span> <span class="mf">92.0</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># Add the same city markers again</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+        <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Latitude&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">]],</span>
+        <span class="n">popup</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;City&quot;</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m2</span><span class="p">)</span>
+
+<span class="n">m2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_f3a88fdd2bf467961c796a6f18d5e99c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+        
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_f3a88fdd2bf467961c796a6f18d5e99c&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_f3a88fdd2bf467961c796a6f18d5e99c = L.map(
+                &quot;map_f3a88fdd2bf467961c796a6f18d5e99c&quot;,
+                {
+                    center: [25.5, 92.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e4bc1cc7c55e97f26db0db5957e84b6b = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            );
+        
+    
+            tile_layer_e4bc1cc7c55e97f26db0db5957e84b6b.addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+            var marker_4f08782145ea22de66087c6e841a36b9 = L.marker(
+                [28.7041, 77.1025],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_c738f1e889b6d6d2ef212b6668ebc9d7 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_c0ebb0312ed64cd9b37826a94a908274 = $(`&lt;div id=&quot;html_c0ebb0312ed64cd9b37826a94a908274&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Delhi&lt;/div&gt;`)[0];
+                popup_c738f1e889b6d6d2ef212b6668ebc9d7.setContent(html_c0ebb0312ed64cd9b37826a94a908274);
+            
+        
+
+        marker_4f08782145ea22de66087c6e841a36b9.bindPopup(popup_c738f1e889b6d6d2ef212b6668ebc9d7)
+        ;
+
+        
+    
+    
+            var marker_4b2c11cb5da048f9e92793282d8c6df7 = L.marker(
+                [19.076, 72.8777],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_ea751e907d65ce78a69f07822c0a966f = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_77990139eec5699660a2bfb2e2fae06f = $(`&lt;div id=&quot;html_77990139eec5699660a2bfb2e2fae06f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Mumbai&lt;/div&gt;`)[0];
+                popup_ea751e907d65ce78a69f07822c0a966f.setContent(html_77990139eec5699660a2bfb2e2fae06f);
+            
+        
+
+        marker_4b2c11cb5da048f9e92793282d8c6df7.bindPopup(popup_ea751e907d65ce78a69f07822c0a966f)
+        ;
+
+        
+    
+    
+            var marker_88713de0242f078ef71f30e5709bfba5 = L.marker(
+                [13.0827, 80.2707],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_f91f20567e10d89ee465ca2372d373b6 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_d5d25a45acdeba90203a7594d96a0144 = $(`&lt;div id=&quot;html_d5d25a45acdeba90203a7594d96a0144&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Chennai&lt;/div&gt;`)[0];
+                popup_f91f20567e10d89ee465ca2372d373b6.setContent(html_d5d25a45acdeba90203a7594d96a0144);
+            
+        
+
+        marker_88713de0242f078ef71f30e5709bfba5.bindPopup(popup_f91f20567e10d89ee465ca2372d373b6)
+        ;
+
+        
+    
+    
+            var marker_0046d69660c698cfe52a293c616d5aa9 = L.marker(
+                [22.5726, 88.3639],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_bbb9b9617cd226e5b793ac2bb0c32639 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_bb6e10bdf17c6c76a60509d3e553de29 = $(`&lt;div id=&quot;html_bb6e10bdf17c6c76a60509d3e553de29&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Kolkata&lt;/div&gt;`)[0];
+                popup_bbb9b9617cd226e5b793ac2bb0c32639.setContent(html_bb6e10bdf17c6c76a60509d3e553de29);
+            
+        
+
+        marker_0046d69660c698cfe52a293c616d5aa9.bindPopup(popup_bbb9b9617cd226e5b793ac2bb0c32639)
+        ;
+
+        
+    
+    
+            var marker_dd838d15d242c7b50953650e50d6d0ba = L.marker(
+                [12.9716, 77.5946],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_f870b39de2dac4b85d05f14a7beb89ed = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_75953e046c9f12af48213be8899d1098 = $(`&lt;div id=&quot;html_75953e046c9f12af48213be8899d1098&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Bengaluru&lt;/div&gt;`)[0];
+                popup_f870b39de2dac4b85d05f14a7beb89ed.setContent(html_75953e046c9f12af48213be8899d1098);
+            
+        
+
+        marker_dd838d15d242c7b50953650e50d6d0ba.bindPopup(popup_f870b39de2dac4b85d05f14a7beb89ed)
+        ;
+
+        
+    
+    
+            var marker_20cbc69a29095dfb346e1ed691ae5499 = L.marker(
+                [26.9124, 75.7873],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_ce0855166286e9bf87de42fb58006d32 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_418dc7ef2dbc7f21d979a718ce6540fb = $(`&lt;div id=&quot;html_418dc7ef2dbc7f21d979a718ce6540fb&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Jaipur&lt;/div&gt;`)[0];
+                popup_ce0855166286e9bf87de42fb58006d32.setContent(html_418dc7ef2dbc7f21d979a718ce6540fb);
+            
+        
+
+        marker_20cbc69a29095dfb346e1ed691ae5499.bindPopup(popup_ce0855166286e9bf87de42fb58006d32)
+        ;
+
+        
+    
+    
+            var marker_3f45c93f37af0021cb2097ee2db465c8 = L.marker(
+                [25.5941, 85.1376],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_4f20f74743e4bb08ef970dafb23932b9 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_c95c4f68e35b166eeec42cb9ca441233 = $(`&lt;div id=&quot;html_c95c4f68e35b166eeec42cb9ca441233&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Patna&lt;/div&gt;`)[0];
+                popup_4f20f74743e4bb08ef970dafb23932b9.setContent(html_c95c4f68e35b166eeec42cb9ca441233);
+            
+        
+
+        marker_3f45c93f37af0021cb2097ee2db465c8.bindPopup(popup_4f20f74743e4bb08ef970dafb23932b9)
+        ;
+
+        
+    
+    
+            var marker_c2cfcd2f1cf60e83d9e16e035f4d6287 = L.marker(
+                [25.5788, 91.8933],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_962efad0e03fd1af878a559f005f3c21 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_644407031128889c281500ff8019cc7e = $(`&lt;div id=&quot;html_644407031128889c281500ff8019cc7e&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Shillong&lt;/div&gt;`)[0];
+                popup_962efad0e03fd1af878a559f005f3c21.setContent(html_644407031128889c281500ff8019cc7e);
+            
+        
+
+        marker_c2cfcd2f1cf60e83d9e16e035f4d6287.bindPopup(popup_962efad0e03fd1af878a559f005f3c21)
+        ;
+
+        
+    
+    
+            var marker_7b523fd25ceedf74f95f8be96626fc25 = L.marker(
+                [9.9312, 76.2673],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_97a89f1d12141eb885673ef59ac54dd1 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_f99567085357bbf8587feaf298942e06 = $(`&lt;div id=&quot;html_f99567085357bbf8587feaf298942e06&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Kochi&lt;/div&gt;`)[0];
+                popup_97a89f1d12141eb885673ef59ac54dd1.setContent(html_f99567085357bbf8587feaf298942e06);
+            
+        
+
+        marker_7b523fd25ceedf74f95f8be96626fc25.bindPopup(popup_97a89f1d12141eb885673ef59ac54dd1)
+        ;
+
+        
+    
+    
+            var marker_6ba08f757e8e34567d7e30f9642d00f5 = L.marker(
+                [23.0225, 72.5714],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_c67936feaafcb835ab4830eca7f41e36 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_d1ab11cf3a509c25d9a2854d8eb1a351 = $(`&lt;div id=&quot;html_d1ab11cf3a509c25d9a2854d8eb1a351&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Ahmedabad&lt;/div&gt;`)[0];
+                popup_c67936feaafcb835ab4830eca7f41e36.setContent(html_d1ab11cf3a509c25d9a2854d8eb1a351);
+            
+        
+
+        marker_6ba08f757e8e34567d7e30f9642d00f5.bindPopup(popup_c67936feaafcb835ab4830eca7f41e36)
+        ;
+
+        
+    
+    
+            var marker_5bde9938a18fdccc758bf69399972180 = L.marker(
+                [17.385, 78.4867],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_77204321cb9a5927cea019458783460d = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_08af818956ca7f4296b5e922c857da9b = $(`&lt;div id=&quot;html_08af818956ca7f4296b5e922c857da9b&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Hyderabad&lt;/div&gt;`)[0];
+                popup_77204321cb9a5927cea019458783460d.setContent(html_08af818956ca7f4296b5e922c857da9b);
+            
+        
+
+        marker_5bde9938a18fdccc758bf69399972180.bindPopup(popup_77204321cb9a5927cea019458783460d)
+        ;
+
+        
+    
+    
+            var marker_4adfd268612996da0382f36b11945c9c = L.marker(
+                [18.5204, 73.8567],
+                {}
+            ).addTo(map_f3a88fdd2bf467961c796a6f18d5e99c);
+        
+    
+        var popup_41e292414f34991eda494a22072085d2 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_652e2c01e30043ef07f47ebfdc8989f4 = $(`&lt;div id=&quot;html_652e2c01e30043ef07f47ebfdc8989f4&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Pune&lt;/div&gt;`)[0];
+                popup_41e292414f34991eda494a22072085d2.setContent(html_652e2c01e30043ef07f47ebfdc8989f4);
+            
+        
+
+        marker_4adfd268612996da0382f36b11945c9c.bindPopup(popup_41e292414f34991eda494a22072085d2)
+        ;
+
+        
+    
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+</section>
+</section>
+<section id="reflection">
+<h2>Reflection<a class="headerlink" href="#reflection" title="Permalink to this heading">#</a></h2>
+<p>You have now seen how numbers can turn into a map, and how a map can turn into a story. Before computers, scholars used careful observation to understand geography. Today, we can place many points on a map and see patterns instantly.</p>
+<p>Reflect on what you learned.</p>
+<ul class="simple">
+<li><p>Why does a simple x-y plot not look like a real map</p></li>
+<li><p>What did folium help you see more clearly</p></li>
+<li><p>How do maps help us understand patterns in the world</p></li>
+<li><p>What story did the city positions tell you</p></li>
+<li><p>How does this connect with what you learned in earlier units about patterns and visualization</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "mlp"
+        },
+        kernelOptions: {
+            name: "mlp",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'mlp'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit-5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 5: The Classifier</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-1-creating-and-viewing-a-small-geography-dataset">Activity 6.1: Creating and Viewing a Small Geography Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-2-plotting-locations-on-a-simple-graph">Activity 6.2: Plotting Locations on a Simple Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-3-visualizing-the-same-points-on-an-actual-map">Activity 6.3: Visualizing the Same Points on an Actual Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-4-finding-a-story-inside-the-map">Activity 6.4: Finding a Story Inside the Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bhartiya Shiksha Board
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

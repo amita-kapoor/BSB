@@ -1,0 +1,1117 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Unit 2: The Data Detective &#8212; Lab Manual - Data Analysis and Visualisation - Class IX</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit-2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 3: The Great Equalizer" href="Unit-3.html" />
+    <link rel="prev" title="Unit 1: The Digital Lab Book" href="Unit-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit-1.html">Unit 1: The Digital Lab Book</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 2: The Data Detective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-3.html">Unit 3: The Great Equalizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-4.html">Unit 4: The Predictor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-5.html">Unit 5: The Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-6.html">Unit-6: : The Storyteller</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FUnit-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 2: The Data Detective</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-story-from-the-past">A  story from the past</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-1-creating-and-loading-your-first-dataset">Activity 2.1: Creating and Loading Your First Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-2-becoming-a-statistical-detective">Activity 2.2: Becoming a Statistical Detective</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-doing-the-same-exercise-manually-and-compare-the-time-it-took-you-to-calculate-these-numbers-versus-the-computer">Try doing the same exercise manually and compare the time it took you to calculate these numbers versus the computer.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-3-visualizing-humidity-with-a-histogram">Activity 2.3: Visualizing Humidity with a Histogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-4-interpreting-the-patterns-you-see">Activity 2.4: Interpreting the Patterns You See</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-5-your-data-detective-summary">Activity 2.5: Your Data Detective Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-2-the-data-detective">
+<h1>Unit 2: The Data Detective<a class="headerlink" href="#unit-2-the-data-detective" title="Permalink to this heading">#</a></h1>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
+<p>By the end of this unit, students will be capable of</p>
+<ul class="simple">
+<li><p>Recognizing rows and columns in a dataset stored as a DataFrame</p></li>
+<li><p>Explaining the meaning of mean, median, and mode</p></li>
+<li><p>Calculating basic statistical measures using Python</p></li>
+<li><p>Interpreting patterns in data using tables and histograms</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Have you ever watched a detective in a story?
+They don’t guess.
+They observe, compare, collect clues, and finally discover the hidden pattern.</p>
+<p>A Data Detective does exactly the same thing, but instead of fingerprints and footprints, we look at numbers inside a dataset.</p>
+<section id="a-story-from-the-past">
+<h3>A  story from the past<a class="headerlink" href="#a-story-from-the-past" title="Permalink to this heading">#</a></h3>
+<p>Long before computers existed, Indian scholars were already practicing the skills of a Data Detective - observing nature carefully, noting patterns, and drawing reasoned conclusions. Their tools were simple: the sky, the seasons, and years of patient observation.</p>
+<p>In ancient India, astronomers and scholars followed the principle of <em>Parīkṣā</em> - systematic observation.
+Texts such as the Br̥hat Saṁhitā (6th century CE) describe how scholars watched cloud formations, winds, rainfall patterns, and the movement of the sun and stars. Their goal was not guesswork, but careful measurement and logical inference, known as <em>Anumāna</em>.</p>
+<p>These observations were recorded over long periods, sometimes in palm-leaf manuscripts, and later used to understand:</p>
+<ul class="simple">
+<li><p>When the monsoon might arrive</p></li>
+<li><p>How seasonal temperature varied</p></li>
+<li><p>Which months were favourable for farming</p></li>
+<li><p>How celestial patterns relate to timekeeping</p></li>
+</ul>
+<p>While they did not have digital datasets, they did something very similar: They collected data, looked for patterns, and made predictions based on evidence.</p>
+<p>In that sense, when you analyze weather data today, you are continuing a tradition that goes back more than a thousand years — only with tools that scholars of the past would have considered magical.</p>
+</section>
+</section>
+<section id="activity-2-1-creating-and-loading-your-first-dataset">
+<h2>Activity 2.1: Creating and Loading Your First Dataset<a class="headerlink" href="#activity-2-1-creating-and-loading-your-first-dataset" title="Permalink to this heading">#</a></h2>
+<p>We will work with a small weather dataset.
+This dataset has three columns:</p>
+<ul class="simple">
+<li><p>Temperature (°C)</p></li>
+<li><p>Humidity (%)</p></li>
+<li><p>Air Pressure (hPa)</p></li>
+</ul>
+<p>We will start with just 10 entries, similar to 10 days of simple observations.</p>
+<p>Here is the dataset for you to read it:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Day</p></th>
+<th class="head"><p>Temperature (°C)</p></th>
+<th class="head"><p>Humidity (%)</p></th>
+<th class="head"><p>Air Pressure (hPa)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>22</p></td>
+<td><p>60</p></td>
+<td><p>1012</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>24</p></td>
+<td><p>62</p></td>
+<td><p>1010</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>25</p></td>
+<td><p>58</p></td>
+<td><p>1011</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>23</p></td>
+<td><p>65</p></td>
+<td><p>1013</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>26</p></td>
+<td><p>70</p></td>
+<td><p>1014</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>27</p></td>
+<td><p>72</p></td>
+<td><p>1012</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>28</p></td>
+<td><p>68</p></td>
+<td><p>1011</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>24</p></td>
+<td><p>64</p></td>
+<td><p>1013</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>22</p></td>
+<td><p>59</p></td>
+<td><p>1010</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>23</p></td>
+<td><p>61</p></td>
+<td><p>1012</p></td>
+</tr>
+</tbody>
+</table>
+<p>Now we will put this same information into Python so the computer can work with it. We will use the pandas library, which helps Python handle tables of data. Pandas stores a table in a structure called a DataFrame, which is simply a digital version of the table you saw above.</p>
+<blockquote>
+<div><p>📘 <strong>Learning Note</strong></p>
+<p>In Python, a dictionary is a way of storing information in pairs. Each pair has a name and a list of values. You can think of it like a labelled box, where each label has its own list.
+For example, in our weather data:</p>
+<ul class="simple">
+<li><p>“Temperature” is a label, and it has a list of temperature values</p></li>
+<li><p>“Humidity” is another label, with its own list</p></li>
+<li><p>“AirPressure” is another label, with its own list
+All these lists have the same length, so each position together forms one row of data.
+When we give this dictionary to pandas, it converts it into a DataFrame.
+A DataFrame is simply a digital table, like a table you draw in your notebook, with:</p></li>
+<li><p>column names at the top</p></li>
+<li><p>rows of values below</p></li>
+</ul>
+<p>So in simple terms:</p>
+<ul class="simple">
+<li><p>Dictionary helps us organise data by column</p></li>
+<li><p>DataFrame helps us see and work with the data as a table
+This is why we first write the data as a dictionary and then convert it into a DataFrame.</p></li>
+</ul>
+</div></blockquote>
+<p>Let’s create this DataFrame directly inside Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Temperature&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">],</span>
+    <span class="s2">&quot;Humidity&quot;</span><span class="p">:</span>    <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">61</span><span class="p">],</span>
+    <span class="s2">&quot;AirPressure&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1012</span><span class="p">,</span> <span class="mi">1010</span><span class="p">,</span> <span class="mi">1011</span><span class="p">,</span> <span class="mi">1013</span><span class="p">,</span> <span class="mi">1014</span><span class="p">,</span> <span class="mi">1012</span><span class="p">,</span> <span class="mi">1011</span><span class="p">,</span> <span class="mi">1013</span><span class="p">,</span> <span class="mi">1010</span><span class="p">,</span> <span class="mi">1012</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>Humidity</th>
+      <th>AirPressure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22</td>
+      <td>60</td>
+      <td>1012</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>24</td>
+      <td>62</td>
+      <td>1010</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25</td>
+      <td>58</td>
+      <td>1011</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23</td>
+      <td>65</td>
+      <td>1013</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>26</td>
+      <td>70</td>
+      <td>1014</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>27</td>
+      <td>72</td>
+      <td>1012</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>28</td>
+      <td>68</td>
+      <td>1011</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>24</td>
+      <td>64</td>
+      <td>1013</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>22</td>
+      <td>59</td>
+      <td>1010</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>23</td>
+      <td>61</td>
+      <td>1012</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>When you run this cell, Python will display the DataFrame — the same table you read earlier, now stored inside the computer.</p>
+<p>You will use this table in the rest of the unit, and also in some later chapters. Since we will need it again, it is useful to save it as a file.</p>
+<p>A common way to store tables is a format called CSV, which stands for “Comma-Separated Values.” It is a simple text format where each row of the table is written on a new line, and commas separate the values. Many programs, not just Python, understand CSV files.</p>
+<p>Let’s save our table in this format so we can load it whenever we need it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;weather_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This creates a file named weather_data.csv in your notebook folder.
+Now your dataset is ready to be used again in the next activities.</p>
+</section>
+<section id="activity-2-2-becoming-a-statistical-detective">
+<h2>Activity 2.2: Becoming a Statistical Detective<a class="headerlink" href="#activity-2-2-becoming-a-statistical-detective" title="Permalink to this heading">#</a></h2>
+<p>Now that your dataset is ready, you can begin examining it just like a detective examines clues. One of the first ways to understand a list of numbers is to look at what is “typical” or “central.” You have already learned three useful ideas: the <strong>mean</strong>, the <strong>median</strong>, and the <strong>mode</strong>. Python can calculate these for you using simple commands.</p>
+<p>We will begin with the <strong>Temperature</strong> column. The DataFrame stores this column under the name “Temperature”, so we can ask Python to look at it and compute these values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_temp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">median_temp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">mode_temp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Temperature: </span><span class="si">{</span><span class="n">mean_temp</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Median Temperature: </span><span class="si">{</span><span class="n">median_temp</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Mode Temperature: </span><span class="si">{</span><span class="n">mode_temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Temperature: 24.4 
+Median Temperature: 24.0 
+Mode Temperature: 22
+</pre></div>
+</div>
+</div>
+</div>
+<p>When you run this, Python will give you three numbers. These help you understand the overall behaviour of the temperature across the ten days. The mean tells you the average, the median tells you the middle value when the temperatures are arranged in order, and the mode tells you which temperature occurred most often.</p>
+<section id="try-doing-the-same-exercise-manually-and-compare-the-time-it-took-you-to-calculate-these-numbers-versus-the-computer">
+<h3>Try doing the same exercise manually and compare the time it took you to calculate these numbers versus the computer.<a class="headerlink" href="#try-doing-the-same-exercise-manually-and-compare-the-time-it-took-you-to-calculate-these-numbers-versus-the-computer" title="Permalink to this heading">#</a></h3>
+<p>You can do the same for the Humidity column. This lets you compare the two measures and get a sense of whether humidity varies more or less than temperature in this small dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_hum</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">median_hum</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">mode_hum</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Humidity: </span><span class="si">{</span><span class="n">mean_hum</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Median Humidity: </span><span class="si">{</span><span class="n">median_hum</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Mode Humidity: </span><span class="si">{</span><span class="n">mode_hum</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Humidity: 63.9 
+Median Humidity: 63.0 
+Mode Humidity: 58
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you look at the results, notice how these numbers act like summaries of the whole column. Instead of examining all ten values one by one, these three measures help you understand the overall pattern at a glance. This is exactly what a Data Detective does—use a few smart calculations to make sense of many values.</p>
+<p>If you want to compare columns directly, you can print the results together:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Temperature:&quot;</span><span class="p">,</span> <span class="n">mean_temp</span><span class="p">,</span> <span class="n">median_temp</span><span class="p">,</span> <span class="n">mode_temp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Humidity:   &quot;</span><span class="p">,</span> <span class="n">mean_hum</span><span class="p">,</span> <span class="n">median_hum</span><span class="p">,</span> <span class="n">mode_hum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Temperature: 24.4 24.0 22
+Humidity:    63.9 63.0 58
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="activity-2-3-visualizing-humidity-with-a-histogram">
+<h2>Activity 2.3: Visualizing Humidity with a Histogram<a class="headerlink" href="#activity-2-3-visualizing-humidity-with-a-histogram" title="Permalink to this heading">#</a></h2>
+<p>Numbers become much easier to understand when you can see them. In the same way that ancient scholars watched cloud shapes or star positions to notice patterns, you can look at a picture of your data to understand how values are spread out. One of the simplest and most powerful ways to do this is with a histogram.</p>
+<p>A histogram shows how often certain ranges of values appear. If you think of the humidity values as grains collected in different pots, a histogram tells you how full each pot is. Higher bars mean those values occurred more frequently; lower bars mean they were less common.</p>
+<p>Python can draw this picture for you using the plotting library matplotlib. We will create a histogram of the Humidity column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Humidity (%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Humidity Distribution&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/92ee340b8c3d1d863c5db0874e307488c81e43f85536c18ca2d6966d6179ff7a.png" src="_images/92ee340b8c3d1d863c5db0874e307488c81e43f85536c18ca2d6966d6179ff7a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3d6b07a21c121ea94c522ec847b3fcdb2544163bfc1a94e11e2cc9baedeee3b7.png" src="_images/3d6b07a21c121ea94c522ec847b3fcdb2544163bfc1a94e11e2cc9baedeee3b7.png" />
+</div>
+</div>
+<p>More bins divide the humidity values into smaller ranges, giving you a more detailed picture. Fewer bins give you a simpler overview. A Data Detective tries both to get a clear understanding of the data.</p>
+<p>In the next activity, you will continue this detective work by interpreting the patterns you see and connecting them to the idea of making simple inferences from data.</p>
+</section>
+<section id="activity-2-4-interpreting-the-patterns-you-see">
+<h2>Activity 2.4: Interpreting the Patterns You See<a class="headerlink" href="#activity-2-4-interpreting-the-patterns-you-see" title="Permalink to this heading">#</a></h2>
+<p>Now that you have drawn a histogram, you can begin to interpret it the way a detective interprets clues. A histogram is more than a picture; it is a summary of many values at once. Instead of reading every humidity number, you can look at the bars and understand what the data is trying to tell you.</p>
+<p>Start by looking at which bars are the tallest. Taller bars mean that the humidity values in that range occurred more often. Shorter bars tell you that those values were less common. This simple observation already tells you something about the overall pattern of humidity for the ten days.</p>
+<p>Let’s look at the actual values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    60
+1    62
+2    58
+3    65
+4    70
+5    72
+6    68
+7    64
+8    59
+9    61
+Name: Humidity, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now compare the list with the shape of your histogram. You will notice how the histogram gathers nearby values into a group and shows them as a single bar. This makes it easier to see whether the humidity values are mostly high, mostly low, or nicely spread out in the middle.</p>
+<p>To help you reflect as a Data Detective, think about these simple questions:</p>
+<ul class="simple">
+<li><p>Do most days fall into a single humidity range, or are they spread across different ranges?</p></li>
+<li><p>Are there any humidity values that seem unusual or far from the others?</p></li>
+<li><p>If you had to describe the humidity for these ten days to someone who did not see the table or the plot, what would you say?</p></li>
+</ul>
+<p>You can also compare the histogram with the statistical measures you calculated earlier. For example, if the mean and median humidity are close together, and the histogram looks fairly balanced on both sides, that tells you the humidity values are not too skewed or uneven.</p>
+<p>Sometimes it helps to print the mean and median again to keep them in mind while you look at the histogram:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean Humidity:&quot;</span><span class="p">,</span> <span class="n">mean_hum</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Median Humidity:&quot;</span><span class="p">,</span> <span class="n">median_hum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Humidity: 63.9
+Median Humidity: 63.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The goal of this activity is not to get a single correct answer but to practice the habit of observing, comparing, and drawing simple conclusions. This is the same habit ancient scholars used when they studied patterns in the sky and weather. By combining numbers with visual patterns, you get a clearer picture of what the dataset is telling you.</p>
+<p>In the next part, you will wrap up your detective work by creating a short summary of your findings. This small reflection will help you strengthen your understanding of how to read data and explain what you discover.</p>
+</section>
+<section id="activity-2-5-your-data-detective-summary">
+<h2>Activity 2.5: Your Data Detective Summary<a class="headerlink" href="#activity-2-5-your-data-detective-summary" title="Permalink to this heading">#</a></h2>
+<p>You have now explored the dataset in three different ways: by reading the numbers, by calculating the mean–median–mode, and by looking at a histogram. Each method gives you a different kind of clue. The final step is to put these clues together and write a short summary of what you discovered.</p>
+<p>Look at your DataFrame again, your statistical measures, and your histogram, and try to describe what the data is showing. A summary does not need to be long. It just needs to explain what patterns you noticed.</p>
+<p>Here are some guiding questions you can think about while writing:</p>
+<ul class="simple">
+<li><p>What can you say about the temperature values over these ten days?
+<em>Hint: Look at how the temperatures move from day to day. Are they jumping a lot or slowly increasing? Do they stay in a narrow range or a wide range?</em></p></li>
+<li><p>Does the humidity seem mostly high, mostly low, or somewhere in the middle?
+<em>Hint: Think about the numbers in the Humidity column and the bars in your histogram. Which humidity range had the tallest bar? That tells you where most of the days are.</em></p></li>
+<li><p>Did the histogram show a clear cluster or spread-out values?
+<em>Hint: Look at whether many bars are tall in one area, or if the bars are more evenly spread out across the whole x-axis. A cluster means many values gathered close together.</em></p></li>
+<li><p>Which measure (mean, median, or mode) helped you the most in understanding the data?
+<em>Hint: Think about which value felt closest to what you saw in the table and the histogram. Did the mean seem typical? Did the median match the middle? Did the mode appear often in the list?</em></p></li>
+</ul>
+<p>A <strong>Data Detective</strong> always pauses at the end to make sense of the clues. This habit of reflecting - of asking “what does this data really tell me?” - is the beginning of real analysis.</p>
+</section>
+<section id="practice-exercises">
+<h2>Practice Exercises<a class="headerlink" href="#practice-exercises" title="Permalink to this heading">#</a></h2>
+<p>These exercises will help you strengthen the skills you learned in this unit. Try to solve them on your own first, and then check the solutions.</p>
+<ol class="arabic simple">
+<li><p>What is the highest humidity value in the dataset?
+What is the lowest?</p></li>
+</ol>
+<p>Hint: You can use <code class="docutils literal notranslate"><span class="pre">df[&quot;Humidity&quot;].max()</span></code> and <code class="docutils literal notranslate"><span class="pre">df[&quot;Humidity&quot;].min()</span></code>.</p>
+<ol class="arabic simple" start="2">
+<li><p>How many days had a temperature greater than 24°C?</p></li>
+</ol>
+<p>Hint: Use a condition:
+<code class="docutils literal notranslate"><span class="pre">df[df[&quot;Temperature&quot;]</span> <span class="pre">&gt;</span> <span class="pre">24]</span></code></p>
+<ol class="arabic simple" start="3">
+<li><p>Create a histogram for the Temperature column.
+Does it look similar to the humidity histogram or different? Why?</p></li>
+</ol>
+<p>Hint: Use <code class="docutils literal notranslate"><span class="pre">plt.hist(df[&quot;Temperature&quot;],</span> <span class="pre">bins=5)</span></code>.</p>
+<ol class="arabic simple" start="4">
+<li><p>Calculate the range of Air Pressure (maximum minus minimum).</p></li>
+</ol>
+<p>Hint: Subtract <code class="docutils literal notranslate"><span class="pre">min()</span></code> from <code class="docutils literal notranslate"><span class="pre">max()</span></code>.</p>
+<ol class="arabic simple" start="5">
+<li><p>If you had to predict the humidity for an 11th day,
+which value would you choose: mean, median, or mode? Explain.</p></li>
+</ol>
+<section id="solutions">
+<h3>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h3>
+<p>You can compare your answers with the examples below.</p>
+<ol class="arabic simple">
+<li><p>Highest and lowest humidity</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(72, 58)
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Days with temperature greater than 24°C</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">24</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>Humidity</th>
+      <th>AirPressure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>25</td>
+      <td>58</td>
+      <td>1011</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>26</td>
+      <td>70</td>
+      <td>1014</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>27</td>
+      <td>72</td>
+      <td>1012</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>28</td>
+      <td>68</td>
+      <td>1011</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Histogram of Temperature</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Temperature Distribution&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1ad12560e77dbc2a496decd909c211f566d7cbf55dfa2094ecbad9546cdfbb99.png" src="_images/1ad12560e77dbc2a496decd909c211f566d7cbf55dfa2094ecbad9546cdfbb99.png" />
+</div>
+</div>
+<p>Explanation:
+Most students will notice that the temperature values are closer together than the humidity values, so the distribution may look tighter or less spread out.</p>
+<ol class="arabic simple" start="4">
+<li><p>Range of Air Pressure</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Choosing a humidity value for prediction</p></li>
+</ol>
+<p>A reasonable explanation might be:</p>
+<p>“I would choose the median because it represents the middle value and is not affected much by any unusual readings. It gives a stable idea of a typical humidity.”</p>
+<p>Students may also choose mean or mode — the key is that they explain their choice logically.</p>
+</section>
+</section>
+<section id="reflection">
+<h2>Reflection<a class="headerlink" href="#reflection" title="Permalink to this heading">#</a></h2>
+<p>You have now acted as a Data Detective — collecting clues from numbers, asking questions, and using both mathematics and visual tools to understand a small weather dataset. Take a moment to think about your journey through this unit.</p>
+<ul class="simple">
+<li><p>When you looked at the table for the first time, what did you notice immediately?</p></li>
+<li><p>How did the mean, median, and mode help you understand the data better than simply reading the numbers one by one?</p></li>
+<li><p>Did the histogram make any pattern clearer or easier to see?</p></li>
+<li><p>If someone asked you, “What kind of weather do these ten days show?”, what would you say?</p></li>
+</ul>
+<p>Think also about how this connects to the work of scholars from the past. Just as they observed clouds, winds, and stars patiently, you observed numbers and patterns patiently. You used tools like pandas and matplotlib instead of palm leaves, but the habit behind the work is the same: observe carefully, compare thoughtfully, and draw conclusions based on evidence.</p>
+<p>Write a few sentences in the cell below about what you learned, what surprised you, or what felt interesting. This simple reflection helps you understand not just the data, but also your own way of thinking as a young scientist.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "mlp"
+        },
+        kernelOptions: {
+            name: "mlp",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'mlp'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 1: The Digital Lab Book</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit-3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 3: The Great Equalizer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-story-from-the-past">A  story from the past</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-1-creating-and-loading-your-first-dataset">Activity 2.1: Creating and Loading Your First Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-2-becoming-a-statistical-detective">Activity 2.2: Becoming a Statistical Detective</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-doing-the-same-exercise-manually-and-compare-the-time-it-took-you-to-calculate-these-numbers-versus-the-computer">Try doing the same exercise manually and compare the time it took you to calculate these numbers versus the computer.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-3-visualizing-humidity-with-a-histogram">Activity 2.3: Visualizing Humidity with a Histogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-4-interpreting-the-patterns-you-see">Activity 2.4: Interpreting the Patterns You See</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-2-5-your-data-detective-summary">Activity 2.5: Your Data Detective Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bhartiya Shiksha Board
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
