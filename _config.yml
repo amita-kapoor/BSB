@@ -28,6 +28,13 @@ repository:
 launch_buttons:
   notebook_interface: "jupyterlab"
   binderhub_url: "https://mybinder.org"
+  thebe: true
+
+thebe:
+  repository_url: https://github.com/amita-kapoor/BSB
+  repository_branch: main
+  path_to_book: "."
+
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
