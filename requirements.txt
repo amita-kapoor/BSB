@@ -5,5 +5,8 @@ pandas
 folium
 scikit-learn
 ipython
-ipywidgets<8.0.0
-jupyterlab_widgets
+ipywidgets==7.7.2
+widgetsnbextension==3.6.6
+
+notebook>=6.5,<7
+ipykernel
