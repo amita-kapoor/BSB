@@ -34,6 +34,7 @@ thebe:
   repository_url: https://github.com/amita-kapoor/BSB
   repository_branch: main
   path_to_book: "."
+  use_thebe_widgets: true
 
 
 # Add GitHub buttons to your book
