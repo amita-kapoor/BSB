@@ -5,5 +5,5 @@ pandas
 folium
 scikit-learn
 ipython
-ipywidgets
+ipywidgets<8
 jupyterlab_widgets
