@@ -30,6 +30,7 @@ launch_buttons:
   binderhub_url: "https://mybinder.org"
   thebe: true
 
+
 thebe:
   repository_url: https://github.com/amita-kapoor/BSB
   repository_branch: main

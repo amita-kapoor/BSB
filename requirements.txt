@@ -5,8 +5,8 @@ pandas
 folium
 scikit-learn
 ipython
+plotly
 ipywidgets
 widgetsnbextension
 notebook
 ipykernel
-plotly
