@@ -42,8 +42,22 @@ html:
   use_issues_button: true
   use_repository_button: true
   extra_footer: |
-    <script></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>
+      // This config helps the browser find the right version if automatic loading fails
+      window.requirejs.config({
+        map: {
+          '*': {
+            '@jupyter-widgets/base': 'https://cdn.jsdelivr.net/npm/@jupyter-widgets/base@6',
+            '@jupyter-widgets/controls': 'https://cdn.jsdelivr.net/npm/@jupyter-widgets/controls@5',
+            '@jupyter-widgets/output': 'https://cdn.jsdelivr.net/npm/@jupyter-widgets/output@6'
+          }
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.10/dist/embed-amd.js"></script>
 
   extra_head: |
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+
