@@ -44,12 +44,4 @@ html:
   extra_footer: |
     <script></script>
 
-  extra_head: |
-    <meta http-equiv="Content-Security-Policy"
-          content="
-            default-src 'self';
-            frame-src https://www.youtube.com https://www.youtube-nocookie.com;
-            script-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
-            connect-src https://www.youtube.com https://www.youtube-nocookie.com;
-          ">
-
+  

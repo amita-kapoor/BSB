@@ -6,3 +6,4 @@ folium
 scikit-learn
 ipython
 ipywidgets
+jupyterlab_widgets
