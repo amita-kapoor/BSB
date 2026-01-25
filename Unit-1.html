@@ -999,18 +999,20 @@ By Bhartiya Shiksha Board
 <div class="extra_footer">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
 <script>
-  // This config helps the browser find the right version if automatic loading fails
   window.requirejs.config({
     map: {
       '*': {
-        '@jupyter-widgets/base': 'https://cdn.jsdelivr.net/npm/@jupyter-widgets/base@6',
-        '@jupyter-widgets/controls': 'https://cdn.jsdelivr.net/npm/@jupyter-widgets/controls@5',
-        '@jupyter-widgets/output': 'https://cdn.jsdelivr.net/npm/@jupyter-widgets/output@6'
+        '@jupyter-widgets/base': 'https://cdn.jsdelivr.net/npm/@jupyter-widgets/base@6.0.6/dist/index.js?noext',
+        '@jupyter-widgets/controls': 'https://cdn.jsdelivr.net/npm/@jupyter-widgets/controls@5.0.8/dist/index.js?noext',
+        '@jupyter-widgets/output': 'https://cdn.jsdelivr.net/npm/@jupyter-widgets/output@6.0.6/dist/index.js?noext'
       }
     }
   });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.10/dist/embed-amd.js"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+<p style="text-align: center;">
+  &copy; 2026 Bhartiya Shiksha Board. All rights reserved.
+</p>
 
 </div>
   </div>
