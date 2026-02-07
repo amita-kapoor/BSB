@@ -722,9 +722,9 @@ As you move the sliders, the graph updates instantly.</p>
 </ul>
 <p>Think of this as a quick visual experiment before you perform the same changes directly in the code.</p>
 <div style="max-width:600px">
-  <label>m (slope): <input type="range" min="-5" max="5" step="0.1" value="1" id="m"></label>
+  <label>m (steepness): <input type="range" min="-5" max="5" step="0.1" value="1" id="m"></label>
   <span id="mVal">1</span><br><br>
-<p><label>c (intercept): <input type="range" min="-5" max="5" step="0.1" value="0" id="c"></label>
+<p><label>c (touch x-axis at): <input type="range" min="-5" max="5" step="0.1" value="0" id="c"></label>
 <span id="cVal">0</span></p>
 <p><svg id="plot" width="500" height="400" style="border:1px solid #ccc; margin-top:10px"></svg></p>
 </div>
@@ -740,6 +740,8 @@ function drawLine(m, c) {
   const ax = `<line x1="0" y1="${height/2}" x2="${width}" y2="${height/2}" stroke="black"/>
               <line x1="${width/2}" y1="0" x2="${width/2}" y2="${height}" stroke="black"/>`;
   svg.innerHTML += ax;
+  svg.innerHTML += `<text x="10" y="20" font-size="16" fill="black">  y = ${m.toFixed(1)}x + ${c.toFixed(1)</text>`;
+
 
   // line
   const x1 = -width/2/scale;
