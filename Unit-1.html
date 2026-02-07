@@ -713,7 +713,7 @@ document.write(`
 <h3>Interactive Activity 1.1<a class="headerlink" href="#interactive-activity-1-1" title="Permalink to this heading">#</a></h3>
 <p>Before changing the code manually, let us first experiment in a simpler way.</p>
 <p>In the interactive activity below, you can move sliders to change the values of <code class="docutils literal notranslate"><span class="pre">m</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> in the equation:
-$<span class="math notranslate nohighlight">\(y = mx + c\)</span>$
+<span class="math notranslate nohighlight">\(y = mx + c\)</span>
 As you move the sliders, the graph updates instantly.</p>
 <p>This allows you to observe:</p>
 <ul class="simple">
@@ -721,6 +721,65 @@ As you move the sliders, the graph updates instantly.</p>
 <li><p>how changing <code class="docutils literal notranslate"><span class="pre">c</span></code> moves the line up or down</p></li>
 </ul>
 <p>Think of this as a quick visual experiment before you perform the same changes directly in the code.</p>
+<div style="max-width:600px">
+  <label>
+    m (steepness):
+    <input type="range" min="-5" max="5" step="0.1" value="1" id="m">
+  </label>
+  <span id="mVal">1</span><br><br>
+  <label>
+    c (touch x-axis):
+    <input type="range" min="-5" max="5" step="0.1" value="0" id="c">
+  </label>
+  <span id="cVal">0</span>
+<p><svg id="plot" width="500" height="400" style="border:1px solid #ccc; margin-top:10px"></svg></p>
+</div>
+<script>
+  const svg = document.getElementById("plot");
+  const width = 500, height = 400;
+  const scale = 20;
+
+  function drawLine(m, c) {
+    svg.innerHTML = "";
+
+    // axes
+    const ax = `
+      <line x1="0" y1="${height / 2}" x2="${width}" y2="${height / 2}" stroke="black"/>
+      <line x1="${width / 2}" y1="0" x2="${width / 2}" y2="${height}" stroke="black"/>
+    `;
+    svg.innerHTML += ax;
+
+    // line
+    const x1 = -width / 2 / scale;
+    const y1 = m * x1 + c;
+    const x2 =  width / 2 / scale;
+    const y2 = m * x2 + c;
+
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", width / 2 + x1 * scale);
+    line.setAttribute("y1", height / 2 - y1 * scale);
+    line.setAttribute("x2", width / 2 + x2 * scale);
+    line.setAttribute("y2", height / 2 - y2 * scale);
+    line.setAttribute("stroke", "blue");
+    line.setAttribute("stroke-width", 2);
+    svg.appendChild(line);
+  }
+
+  function update() {
+    const m = parseFloat(document.getElementById("m").value);
+    const c = parseFloat(document.getElementById("c").value);
+
+    document.getElementById("mVal").textContent = m;
+    document.getElementById("cVal").textContent = c;
+
+    drawLine(m, c);
+  }
+
+  document.getElementById("m").oninput = update;
+  document.getElementById("c").oninput = update;
+
+  update();
+</script>
 <div style="max-width:600px">
   <label>
     m (steepness):
