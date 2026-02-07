@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 1: The Digital Lab Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Unit-2.html">Unit 2: The Data Detective</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unit-3.html">Unit 3: The Great Equalizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-3.html">Unit 3: The Great Equaliser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Unit-4.html">Unit 4: The Predictor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Unit-5.html">Unit 5: The Classifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Unit-6.html">Unit-6: : The Storyteller</a></li>
@@ -722,124 +722,53 @@ As you move the sliders, the graph updates instantly.</p>
 </ul>
 <p>Think of this as a quick visual experiment before you perform the same changes directly in the code.</p>
 <div style="max-width:600px">
-  <label>
-    m (steepness):
-    <input type="range" min="-5" max="5" step="0.1" value="1" id="m">
-  </label>
+  <label>m (slope): <input type="range" min="-5" max="5" step="0.1" value="1" id="m"></label>
   <span id="mVal">1</span><br><br>
-  <label>
-    c (touch x-axis):
-    <input type="range" min="-5" max="5" step="0.1" value="0" id="c">
-  </label>
-  <span id="cVal">0</span>
+<p><label>c (intercept): <input type="range" min="-5" max="5" step="0.1" value="0" id="c"></label>
+<span id="cVal">0</span></p>
 <p><svg id="plot" width="500" height="400" style="border:1px solid #ccc; margin-top:10px"></svg></p>
 </div>
 <script>
-  const svg = document.getElementById("plot");
-  const width = 500, height = 400;
-  const scale = 20;
+const svg = document.getElementById("plot");
+const width = 500, height = 400;
+const scale = 20;
 
-  function drawLine(m, c) {
-    svg.innerHTML = "";
+function drawLine(m, c) {
+  svg.innerHTML = "";
 
-    // axes
-    const ax = `
-      <line x1="0" y1="${height / 2}" x2="${width}" y2="${height / 2}" stroke="black"/>
-      <line x1="${width / 2}" y1="0" x2="${width / 2}" y2="${height}" stroke="black"/>
-    `;
-    svg.innerHTML += ax;
+  // axes
+  const ax = `<line x1="0" y1="${height/2}" x2="${width}" y2="${height/2}" stroke="black"/>
+              <line x1="${width/2}" y1="0" x2="${width/2}" y2="${height}" stroke="black"/>`;
+  svg.innerHTML += ax;
 
-    // line
-    const x1 = -width / 2 / scale;
-    const y1 = m * x1 + c;
-    const x2 =  width / 2 / scale;
-    const y2 = m * x2 + c;
+  // line
+  const x1 = -width/2/scale;
+  const y1 = m * x1 + c;
+  const x2 = width/2/scale;
+  const y2 = m * x2 + c;
 
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", width / 2 + x1 * scale);
-    line.setAttribute("y1", height / 2 - y1 * scale);
-    line.setAttribute("x2", width / 2 + x2 * scale);
-    line.setAttribute("y2", height / 2 - y2 * scale);
-    line.setAttribute("stroke", "blue");
-    line.setAttribute("stroke-width", 2);
-    svg.appendChild(line);
-  }
+  const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  line.setAttribute("x1", width/2 + x1*scale);
+  line.setAttribute("y1", height/2 - y1*scale);
+  line.setAttribute("x2", width/2 + x2*scale);
+  line.setAttribute("y2", height/2 - y2*scale);
+  line.setAttribute("stroke", "blue");
+  line.setAttribute("stroke-width", 2);
+  svg.appendChild(line);
+}
 
-  function update() {
-    const m = parseFloat(document.getElementById("m").value);
-    const c = parseFloat(document.getElementById("c").value);
+function update() {
+  const m = parseFloat(document.getElementById("m").value);
+  const c = parseFloat(document.getElementById("c").value);
+  document.getElementById("mVal").textContent = m;
+  document.getElementById("cVal").textContent = c;
+  drawLine(m, c);
+}
 
-    document.getElementById("mVal").textContent = m;
-    document.getElementById("cVal").textContent = c;
+document.getElementById("m").oninput = update;
+document.getElementById("c").oninput = update;
 
-    drawLine(m, c);
-  }
-
-  document.getElementById("m").oninput = update;
-  document.getElementById("c").oninput = update;
-
-  update();
-</script>
-<div style="max-width:600px">
-  <label>
-    m (steepness):
-    <input type="range" min="-5" max="5" step="0.1" value="1" id="m" />
-  </label>
-  <span id="mVal">1</span><br /><br />
-  <label>
-    c (touch x-axis):
-    <input type="range" min="-5" max="5" step="0.1" value="0" id="c" />
-  </label>
-  <span id="cVal">0</span>
-  <!-- Keep SVG on ONE line to avoid markdown/nbconvert quirks -->
-<p><svg id="plot" width="500" height="400" style="border:1px solid #ccc; margin-top:10px"></svg></p>
-</div>
-<script>
-  const svg = document.getElementById("plot");
-  const width = 500,
-    height = 400;
-  const scale = 20;
-
-  function drawLine(m, c) {
-    svg.innerHTML = "";
-
-    // axes
-    const ax = `
-      <line x1="0" y1="${height / 2}" x2="${width}" y2="${height / 2}" stroke="black"/>
-      <line x1="${width / 2}" y1="0" x2="${width / 2}" y2="${height}" stroke="black"/>
-    `;
-    svg.innerHTML += ax;
-
-    // line endpoints in math coordinates
-    const x1 = -width / 2 / scale;
-    const y1 = m * x1 + c;
-    const x2 = width / 2 / scale;
-    const y2 = m * x2 + c;
-
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", width / 2 + x1 * scale);
-    line.setAttribute("y1", height / 2 - y1 * scale);
-    line.setAttribute("x2", width / 2 + x2 * scale);
-    line.setAttribute("y2", height / 2 - y2 * scale);
-    line.setAttribute("stroke", "blue");
-    line.setAttribute("stroke-width", 2);
-    svg.appendChild(line);
-  }
-
-  function update() {
-    const m = parseFloat(document.getElementById("m").value);
-    const c = parseFloat(document.getElementById("c").value);
-
-    document.getElementById("mVal").textContent = m;
-    document.getElementById("cVal").textContent = c;
-
-    drawLine(m, c);
-  }
-
-  document.getElementById("m").oninput = update;
-  document.getElementById("c").oninput = update;
-
-  update();
+update();
 </script>
 <section id="task-1-change-the-steepness-m">
 <h4>Task 1: Change the Steepness (<code class="docutils literal notranslate"><span class="pre">m</span></code>)<a class="headerlink" href="#task-1-change-the-steepness-m" title="Permalink to this heading">#</a></h4>
