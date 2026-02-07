@@ -740,7 +740,15 @@ function drawLine(m, c) {
   const ax = `<line x1="0" y1="${height/2}" x2="${width}" y2="${height/2}" stroke="black"/>
               <line x1="${width/2}" y1="0" x2="${width/2}" y2="${height}" stroke="black"/>`;
   svg.innerHTML += ax;
-  svg.innerHTML += `<text x="10" y="20" font-size="16" fill="black">  y = ${m.toFixed(1)}x + ${c.toFixed(1)</text>`;
+  // equation label (safe: real SVG node, not innerHTML)
+  const eq = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  eq.setAttribute("x", 10);
+  eq.setAttribute("y", 22);
+  eq.setAttribute("font-size", "16");
+  eq.setAttribute("fill", "black");
+  eq.textContent = `y = ${m.toFixed(1)}x + ${c.toFixed(1)}`;
+  svg.appendChild(eq);
+  
 
 
   // line
