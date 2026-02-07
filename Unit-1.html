@@ -444,8 +444,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-1-4-experimenting-by-changing-code">Activity 1.4: Experimenting by Changing Code</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-activity-1-1">Interactive Activity 1.1</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-change-the-slope-m">Task 1: Change the Slope (<code class="docutils literal notranslate"><span class="pre">m</span></code>)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-change-the-intercept-c">Task 2: Change the Intercept (c)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-change-the-steepness-m">Task 1: Change the Steepness (<code class="docutils literal notranslate"><span class="pre">m</span></code>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-change-the-point-where-graph-meets-x-axis-c">Task 2: Change the point where graph meets x-axis (c)</a></li>
 </ul>
 </li>
 </ul>
@@ -722,9 +722,9 @@ As you move the sliders, the graph updates instantly.</p>
 </ul>
 <p>Think of this as a quick visual experiment before you perform the same changes directly in the code.</p>
 <div style="max-width:600px">
-  <label>m (slope): <input type="range" min="-5" max="5" step="0.1" value="1" id="m"></label>
+  <label>m (steepness): <input type="range" min="-5" max="5" step="0.1" value="1" id="m"></label>
   <span id="mVal">1</span><br><br>
-<p><label>c (intercept): <input type="range" min="-5" max="5" step="0.1" value="0" id="c"></label>
+<p><label>c (touch x-axis): <input type="range" min="-5" max="5" step="0.1" value="0" id="c"></label>
 <span id="cVal">0</span></p>
 <p><svg id="plot" width="500" height="400" style="border:1px solid #ccc; margin-top:10px"></svg></p>
 </div>
@@ -770,8 +770,8 @@ document.getElementById("c").oninput = update;
 
 update();
 </script>
-<section id="task-1-change-the-slope-m">
-<h4>Task 1: Change the Slope (<code class="docutils literal notranslate"><span class="pre">m</span></code>)<a class="headerlink" href="#task-1-change-the-slope-m" title="Permalink to this heading">#</a></h4>
+<section id="task-1-change-the-steepness-m">
+<h4>Task 1: Change the Steepness (<code class="docutils literal notranslate"><span class="pre">m</span></code>)<a class="headerlink" href="#task-1-change-the-steepness-m" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>Copy the complete code from Activity 1.3 into the empty cell below.</p></li>
 <li><p>Find the line <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">2*x</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p></li>
@@ -810,8 +810,8 @@ update();
 </div>
 </div>
 </section>
-<section id="task-2-change-the-intercept-c">
-<h4>Task 2: Change the Intercept (c)<a class="headerlink" href="#task-2-change-the-intercept-c" title="Permalink to this heading">#</a></h4>
+<section id="task-2-change-the-point-where-graph-meets-x-axis-c">
+<h4>Task 2: Change the point where graph meets x-axis (c)<a class="headerlink" href="#task-2-change-the-point-where-graph-meets-x-axis-c" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>Go back to the code you just pasted (or copy the original code again).</p></li>
 <li><p>This time, change the line y = 5<em>x + 1 (or the original y = 2</em>x + 1) to y = 2*x + 5.</p></li>
@@ -945,8 +945,8 @@ update();
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-1-4-experimenting-by-changing-code">Activity 1.4: Experimenting by Changing Code</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-activity-1-1">Interactive Activity 1.1</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-change-the-slope-m">Task 1: Change the Slope (<code class="docutils literal notranslate"><span class="pre">m</span></code>)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-change-the-intercept-c">Task 2: Change the Intercept (c)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-change-the-steepness-m">Task 1: Change the Steepness (<code class="docutils literal notranslate"><span class="pre">m</span></code>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-change-the-point-where-graph-meets-x-axis-c">Task 2: Change the point where graph meets x-axis (c)</a></li>
 </ul>
 </li>
 </ul>
