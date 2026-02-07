@@ -721,54 +721,122 @@ As you move the sliders, the graph updates instantly.</p>
 <li><p>how changing <code class="docutils literal notranslate"><span class="pre">c</span></code> moves the line up or down</p></li>
 </ul>
 <p>Think of this as a quick visual experiment before you perform the same changes directly in the code.</p>
-<div style="max-width:600px">
-  <label>m (steepness): <input type="range" min="-5" max="5" step="0.1" value="1" id="m"></label>
-  <span id="mVal">1</span><br><br>
-<p><label>c (touch x-axis): <input type="range" min="-5" max="5" step="0.1" value="0" id="c"></label>
-<span id="cVal">0</span></p>
-<p><svg id="plot" width="500" height="400" style="border:1px solid #ccc; margin-top:10px"></svg></p>
+<div style="max-width:700px">
+  <div style="margin-bottom:8px; font-family: system-ui;">
+    <b>Histogram bins demo</b> —
+    <span id="histStatus" style="color:#666">status: not started</span>
+  </div>
+  <label style="font-family:system-ui;">
+    Variable:
+    <select id="histVar">
+      <option value="Temperature">Temperature</option>
+      <option value="Humidity">Humidity</option>
+      <option value="AirPressure">AirPressure</option>
+    </select>
+  </label>
+<p><br><br></p>
+  <label style="font-family:system-ui;">
+    # bins:
+    <input type="range" min="2" max="20" step="1" value="6" id="histBins">
+  </label>
+  <span id="histBinsVal">6</span>
+<p><svg id="histSvg" width="650" height="360" style="border:1px solid #ccc; margin-top:10px; display:block;"></svg></p>
 </div>
 <script>
-const svg = document.getElementById("plot");
-const width = 500, height = 400;
-const scale = 20;
+(function () {
+  // DATA
+  const data = {
+    Temperature: [22, 24, 25, 23, 26, 27, 28, 24, 22, 23],
+    Humidity:    [60, 62, 58, 65, 70, 72, 68, 64, 59, 61],
+    AirPressure: [1012, 1010, 1011, 1013, 1014, 1012, 1011, 1013, 1010, 1012]
+  };
 
-function drawLine(m, c) {
-  svg.innerHTML = "";
+  const statusEl = document.getElementById("histStatus");
+  const svg = document.getElementById("histSvg");
+  const sel = document.getElementById("histVar");
+  const bins = document.getElementById("histBins");
+  const binsVal = document.getElementById("histBinsVal");
 
-  // axes
-  const ax = `<line x1="0" y1="${height/2}" x2="${width}" y2="${height/2}" stroke="black"/>
-              <line x1="${width/2}" y1="0" x2="${width/2}" y2="${height}" stroke="black"/>`;
-  svg.innerHTML += ax;
+  // If any of these are null, Jupyter Book rewrote IDs or duplicated content.
+  if (!statusEl || !svg || !sel || !bins || !binsVal) {
+    // Make it visible on the page (no console needed)
+    const msg = document.createElement("div");
+    msg.style.color = "crimson";
+    msg.style.fontFamily = "system-ui";
+    msg.textContent = "Histogram widget error: could not find required elements by ID. (IDs may be duplicated or altered.)";
+    document.currentScript.parentNode.insertBefore(msg, document.currentScript);
+    return;
+  }
 
-  // line
-  const x1 = -width/2/scale;
-  const y1 = m * x1 + c;
-  const x2 = width/2/scale;
-  const y2 = m * x2 + c;
+  statusEl.textContent = "status: script loaded ✅";
 
-  const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  line.setAttribute("x1", width/2 + x1*scale);
-  line.setAttribute("y1", height/2 - y1*scale);
-  line.setAttribute("x2", width/2 + x2*scale);
-  line.setAttribute("y2", height/2 - y2*scale);
-  line.setAttribute("stroke", "blue");
-  line.setAttribute("stroke-width", 2);
-  svg.appendChild(line);
-}
+  function draw() {
+    const key = sel.value;
+    const values = data[key].slice().sort((a,b)=>a-b);
+    const k = parseInt(bins.value, 10);
+    binsVal.textContent = k;
 
-function update() {
-  const m = parseFloat(document.getElementById("m").value);
-  const c = parseFloat(document.getElementById("c").value);
-  document.getElementById("mVal").textContent = m;
-  document.getElementById("cVal").textContent = c;
-  drawLine(m, c);
-}
+    const W = 650, H = 360;
+    const padL = 45, padR = 15, padT = 20, padB = 45;
+    const innerW = W - padL - padR;
+    const innerH = H - padT - padB;
 
-document.getElementById("m").oninput = update;
-document.getElementById("c").oninput = update;
+    const min = values[0];
+    const max = values[values.length - 1];
+    const range = (max - min) || 1;
+    const bw = range / k;
 
-update();
+    // counts
+    const counts = new Array(k).fill(0);
+    for (const x of values) {
+      let idx = Math.floor((x - min) / bw);
+      if (idx === k) idx = k - 1;
+      counts[idx]++;
+    }
+    const maxC = Math.max(...counts, 1);
+
+    // axes + bars using innerHTML (same style as your working demo)
+    svg.innerHTML = "";
+
+    // axes
+    svg.innerHTML += `
+      <line x1="${padL}" y1="${padT + innerH}" x2="${padL + innerW}" y2="${padT + innerH}" stroke="black"/>
+      <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT + innerH}" stroke="black"/>
+      <text x="${padL}" y="16" font-size="14" font-weight="700">${key}</text>
+      <text x="${padL}" y="${H-12}" font-size="12">${key} (bin width ≈ ${bw.toPrecision(3)})</text>
+      <text x="12" y="${padT + innerH/2}" font-size="12" transform="rotate(-90 12 ${padT + innerH/2})">Count</text>
+    `;
+
+    // simple y grid (0..maxC)
+    for (let i=0; i<=4; i++) {
+      const c = Math.round(maxC * i / 4);
+      const y = padT + innerH - (innerH * i / 4);
+      svg.innerHTML += `<line x1="${padL}" y1="${y}" x2="${padL+innerW}" y2="${y}" stroke="#eee"/>`;
+      svg.innerHTML += `<text x="${padL-8}" y="${y+4}" font-size="12" text-anchor="end" fill="#444">${c}</text>`;
+    }
+
+    // bars
+    const barW = innerW / k;
+    for (let i=0; i<k; i++) {
+      const h = innerH * (counts[i] / maxC);
+      const x = padL + i*barW + 1;
+      const y = padT + innerH - h;
+      svg.innerHTML += `
+        <rect x="${x}" y="${y}" width="${Math.max(0, barW-2)}" height="${h}"
+              fill="#4C78A8" opacity="0.9">
+          <title>bin ${i+1}: count=${counts[i]}</title>
+        </rect>
+      `;
+    }
+
+    statusEl.textContent = "status: drawn ✅";
+  }
+
+  sel.onchange = draw;
+  bins.oninput = draw;
+
+  draw();
+})();
 </script>
 <section id="task-1-change-the-steepness-m">
 <h4>Task 1: Change the Steepness (<code class="docutils literal notranslate"><span class="pre">m</span></code>)<a class="headerlink" href="#task-1-change-the-steepness-m" title="Permalink to this heading">#</a></h4>
