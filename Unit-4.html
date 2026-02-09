@@ -424,7 +424,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-1-creating-and-viewing-a-simple-physics-dataset">Activity 4.1: Creating and Viewing a Simple Physics Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-2-visualising-the-data-with-a-scatter-plot">Activity 4.2: Visualising the Data with a Scatter Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-2-visualising-the-data-with-a-scatter-plot">Activity 4.2: Visualising the Data with a Scatter Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-activity-4-1">Interactive Activity 4.1</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-3-fitting-a-line-of-best-fit">Activity 4.3: Fitting a Line of Best Fit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-4-making-a-prediction">Activity 4.4: Making a Prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
@@ -571,13 +574,156 @@ which we can model using a line of best fit.</p>
 </div>
 </div>
 <p>You will see that the dots rise as the force increases. They form a roughly straight pattern. This tells you that a straight line would be a good model to summarise this relationship.</p>
+<section id="interactive-activity-4-1">
+<h3>Interactive Activity 4.1<a class="headerlink" href="#interactive-activity-4-1" title="Permalink to this heading">#</a></h3>
+<p>Before fitting a line to the data, let us explore the relationship in a more interactive way.</p>
+<p>In the activity below, you can change the applied force and observe how the acceleration changes instantly. This helps you see that force and acceleration are related in a regular, almost linear way.</p>
+<p>This kind of relationship is what allows us to use a straight line as a model in the next activity.</p>
+<div style="max-width:720px; border:1px solid #ddd; border-radius:10px; padding:14px; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;">
+  <h3 style="margin:0 0 8px 0;">Interactive: Force → Acceleration (Newton’s 2nd Law)</h3>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; align-items:start;">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;!-- Controls --&gt;
+&lt;div&gt;
+  &lt;div style=&quot;margin-bottom:10px;&quot;&gt;
+    &lt;label style=&quot;display:flex; justify-content:space-between; gap:10px;&quot;&gt;
+      &lt;span&gt;&lt;b&gt;Force (F)&lt;/b&gt; in Newtons&lt;/span&gt;
+      &lt;span id=&quot;Fval&quot; style=&quot;font-variant-numeric: tabular-nums;&quot;&gt;10&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;input id=&quot;F&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;50&quot; step=&quot;1&quot; value=&quot;10&quot; style=&quot;width:100%;&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;div style=&quot;margin-bottom:10px;&quot;&gt;
+    &lt;label style=&quot;display:flex; justify-content:space-between; gap:10px;&quot;&gt;
+      &lt;span&gt;&lt;b&gt;Mass (m)&lt;/b&gt; in kg&lt;/span&gt;
+      &lt;span id=&quot;mval&quot; style=&quot;font-variant-numeric: tabular-nums;&quot;&gt;5&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;input id=&quot;m&quot; type=&quot;range&quot; min=&quot;1&quot; max=&quot;20&quot; step=&quot;1&quot; value=&quot;5&quot; style=&quot;width:100%;&quot;&gt;
+  &lt;/div&gt;
+
+  &lt;div style=&quot;background:#f7f7f7; padding:10px; border-radius:8px; line-height:1.6;&quot;&gt;
+    &lt;div&gt;&lt;b&gt;Law:&lt;/b&gt; &lt;span style=&quot;font-family: ui-monospace, SFMono-Regular, Menlo, monospace;&quot;&gt;a = F / m&lt;/span&gt;&lt;/div&gt;
+    &lt;div id=&quot;eq&quot; style=&quot;font-family: ui-monospace, SFMono-Regular, Menlo, monospace;&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;margin-top:6px;&quot;&gt;&lt;b&gt;Acceleration (a):&lt;/b&gt; &lt;span id=&quot;aval&quot; style=&quot;font-variant-numeric: tabular-nums;&quot;&gt;&lt;/span&gt; m/s²&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div style=&quot;margin-top:10px; font-size: 0.95em; color:#444;&quot;&gt;
+    &lt;b&gt;Try this:&lt;/b&gt; Keep mass fixed and increase force. Then keep force fixed and increase mass.
+    Notice how acceleration responds.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Visualization --&gt;
+&lt;div&gt;
+  &lt;svg id=&quot;viz&quot; width=&quot;100%&quot; viewBox=&quot;0 0 520 260&quot; style=&quot;border:1px solid #eee; border-radius:10px; background:white;&quot;&gt;
+    &lt;!-- Ground line --&gt;
+    &lt;line x1=&quot;30&quot; y1=&quot;210&quot; x2=&quot;490&quot; y2=&quot;210&quot; stroke=&quot;#333&quot; stroke-width=&quot;2&quot;/&gt;
+
+    &lt;!-- Block --&gt;
+    &lt;rect id=&quot;block&quot; x=&quot;120&quot; y=&quot;140&quot; width=&quot;110&quot; height=&quot;70&quot; rx=&quot;10&quot; ry=&quot;10&quot; fill=&quot;#cfe8ff&quot; stroke=&quot;#2b6cb0&quot; stroke-width=&quot;2&quot;/&gt;
+    &lt;text id=&quot;massText&quot; x=&quot;175&quot; y=&quot;182&quot; text-anchor=&quot;middle&quot; font-size=&quot;16&quot; fill=&quot;#0b2e4a&quot;&gt;m = 5 kg&lt;/text&gt;
+
+    &lt;!-- Force arrow --&gt;
+    &lt;line id=&quot;forceLine&quot; x1=&quot;70&quot; y1=&quot;175&quot; x2=&quot;120&quot; y2=&quot;175&quot; stroke=&quot;#111&quot; stroke-width=&quot;6&quot; stroke-linecap=&quot;round&quot;/&gt;
+    &lt;polygon id=&quot;forceHead&quot; points=&quot;120,175 106,167 106,183&quot; fill=&quot;#111&quot;/&gt;
+    &lt;text id=&quot;forceText&quot; x=&quot;70&quot; y=&quot;150&quot; font-size=&quot;16&quot; fill=&quot;#111&quot;&gt;F = 10 N&lt;/text&gt;
+
+    &lt;!-- Acceleration meter --&gt;
+    &lt;text x=&quot;330&quot; y=&quot;52&quot; font-size=&quot;16&quot; fill=&quot;#111&quot;&gt;&lt;tspan font-weight=&quot;700&quot;&gt;Acceleration meter&lt;/tspan&gt;&lt;/text&gt;
+    &lt;rect x=&quot;330&quot; y=&quot;70&quot; width=&quot;150&quot; height=&quot;18&quot; rx=&quot;9&quot; fill=&quot;#eee&quot;/&gt;
+    &lt;rect id=&quot;abar&quot; x=&quot;330&quot; y=&quot;70&quot; width=&quot;0&quot; height=&quot;18&quot; rx=&quot;9&quot; fill=&quot;#4a90e2&quot;/&gt;
+    &lt;text id=&quot;aText&quot; x=&quot;330&quot; y=&quot;110&quot; font-size=&quot;16&quot; fill=&quot;#111&quot;&gt;a = 2.00 m/s²&lt;/text&gt;
+
+    &lt;!-- Motion trail --&gt;
+    &lt;line id=&quot;trail&quot; x1=&quot;120&quot; y1=&quot;225&quot; x2=&quot;120&quot; y2=&quot;225&quot; stroke=&quot;#4a90e2&quot; stroke-width=&quot;6&quot; stroke-linecap=&quot;round&quot; opacity=&quot;0.45&quot;/&gt;
+
+    &lt;!-- Small note --&gt;
+    &lt;text x=&quot;30&quot; y=&quot;245&quot; font-size=&quot;13&quot; fill=&quot;#555&quot;&gt;Bigger force → bigger acceleration. Bigger mass → smaller acceleration (for same force).&lt;/text&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;
+</pre></div>
+</div>
+  </div>
+</div>
+<script>
+(function () {
+  const Fslider = document.getElementById("F");
+  const mslider = document.getElementById("m");
+  const Fval = document.getElementById("Fval");
+  const mval = document.getElementById("mval");
+  const aval = document.getElementById("aval");
+  const eq = document.getElementById("eq");
+
+  const forceText = document.getElementById("forceText");
+  const massText = document.getElementById("massText");
+  const aText = document.getElementById("aText");
+
+  const forceLine = document.getElementById("forceLine");
+  const forceHead = document.getElementById("forceHead");
+  const abar = document.getElementById("abar");
+  const block = document.getElementById("block");
+  const trail = document.getElementById("trail");
+
+  // Visual scaling constants
+  const Fmax = parseFloat(Fslider.max);   // 50 N
+  const mmax = parseFloat(mslider.max);   // 20 kg
+  const aMaxForBar = 25;                  // cap bar at 25 m/s^2 for display
+
+  // Block base position (x)
+  const x0 = 120;
+
+  function clamp(x, lo, hi) { return Math.max(lo, Math.min(hi, x)); }
+
+  function update() {
+    const F = parseFloat(Fslider.value);
+    const m = parseFloat(mslider.value);
+    const a = (m > 0) ? (F / m) : 0;
+
+    Fval.textContent = F.toFixed(0);
+    mval.textContent = m.toFixed(0);
+    aval.textContent = a.toFixed(2);
+
+    eq.textContent = `a = ${F.toFixed(0)} / ${m.toFixed(0)} = ${a.toFixed(2)}`;
+
+    forceText.textContent = `F = ${F.toFixed(0)} N`;
+    massText.textContent = `m = ${m.toFixed(0)} kg`;
+    aText.textContent = `a = ${a.toFixed(2)} m/s²`;
+
+    // Force arrow length (70..200 px)
+    const arrowLen = 50 + (F / Fmax) * 150;
+    const x1 = 120;                 // arrow points to the block
+    const x0Arrow = x1 - arrowLen;
+    forceLine.setAttribute("x1", x0Arrow);
+    forceLine.setAttribute("x2", x1);
+    forceHead.setAttribute("points", `${x1},175 ${x1-14},167 ${x1-14},183`);
+    forceText.setAttribute("x", x0Arrow);
+
+    // Acceleration bar width (0..150)
+    const barW = 150 * clamp(a / aMaxForBar, 0, 1);
+    abar.setAttribute("width", barW);
+
+    // Move block slightly based on acceleration (illustrative, not a full physics sim)
+    const dx = clamp(a * 8, 0, 180);   // scale a to pixels
+    block.setAttribute("x", x0 + dx);
+    massText.setAttribute("x", (x0 + dx) + 55);
+
+    // Motion trail showing how far the block has shifted
+    trail.setAttribute("x1", x0);
+    trail.setAttribute("x2", x0 + dx);
+  }
+
+  Fslider.addEventListener("input", update);
+  mslider.addEventListener("input", update);
+  update();
+})();
+</script>
+</section>
 </section>
 <section id="activity-4-3-fitting-a-line-of-best-fit">
 <h2>Activity 4.3: Fitting a Line of Best Fit<a class="headerlink" href="#activity-4-3-fitting-a-line-of-best-fit" title="Permalink to this heading">#</a></h2>
 <p>A line of best fit is a line that follows the general trend of the data. It does not pass through every point, but it stays close to all of them. The line is described by the familiar equation:</p>
 <div class="math notranslate nohighlight">
 \[y = m * x + c\]</div>
-<p>where <span class="math notranslate nohighlight">\(m\)</span> is the slope and <span class="math notranslate nohighlight">\(c\)</span> is the intercept.</p>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> is the steepness(slope) and <span class="math notranslate nohighlight">\(c\)</span> is the intercept.</p>
 <p>You can calculate <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> using numpy, another python library we used in Unit 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -887,7 +1033,10 @@ The function then returns two numbers. The first is the slope <span class="math 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-1-creating-and-viewing-a-simple-physics-dataset">Activity 4.1: Creating and Viewing a Simple Physics Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-2-visualising-the-data-with-a-scatter-plot">Activity 4.2: Visualising the Data with a Scatter Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-2-visualising-the-data-with-a-scatter-plot">Activity 4.2: Visualising the Data with a Scatter Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-activity-4-1">Interactive Activity 4.1</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-3-fitting-a-line-of-best-fit">Activity 4.3: Fitting a Line of Best Fit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-4-4-making-a-prediction">Activity 4.4: Making a Prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
