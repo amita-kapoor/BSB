@@ -422,7 +422,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-1-trying-to-compare-without-scaling">Activity 3.1: Trying to Compare Without Scaling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-2-understanding-the-idea-of-scaling">Activity 3.2: Understanding the Idea of Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-2-understanding-the-idea-of-scaling">Activity 3.2: Understanding the Idea of Scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animation-3-1">Animation 3.1</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-3-performing-min-max-scaling-in-python">Activity 3.3: Performing Min Max Scaling in Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-4-re-plotting-after-scaling">Activity 3.4: Re-plotting After Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
@@ -452,7 +455,7 @@ document.write(`
 <li><p>Comparing original and scaled data using graphs.</p></li>
 <li><p>Explaining how scaling enables fair comparison between quantities.</p></li>
 </ul>
-</section>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eFe2R0fnMAs?si=IfFmO-INuifM25VT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>In the last unit, you explored a small weather dataset and learned how to describe it using statistics and simple visualisations. Now you will try something new. You will compare two different columns in the same graph.</p>
@@ -501,6 +504,15 @@ Before we can do it - we will upload the weather dataset file we saved in Unit 2
 <p>This idea is very similar to ratios, which you have already learned in mathematics. A ratio compares quantities by reducing them to a simpler form. Scaling also reduces numbers to a simpler, common form so that they can be compared fairly.</p>
 <p>The most common scaling method is called Min Max scaling. You do not need to memorise a formula. You only need to understand that scaling helps the computer place different columns on the same level without changing their basic behaviour.</p>
 <p>Now you will apply scaling to the Temperature and Air Pressure columns.</p>
+<section id="animation-3-1">
+<h3>Animation 3.1<a class="headerlink" href="#animation-3-1" title="Permalink to this heading">#</a></h3>
+<p>The animation shows how min–max scaling works step by step.
+It first displays the original data values on a number line and highlights the smallest and largest values.</p>
+<p>Next, each value is rescaled so that all values lie between 0 and 1. As this happens, the positions of the points change, but their order remains the same.</p>
+<p>This makes it clear that min–max scaling changes the scale of the data, not the pattern or relationships within it.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+</section>
 </section>
 <section id="activity-3-3-performing-min-max-scaling-in-python">
 <h2>Activity 3.3: Performing Min Max Scaling in Python<a class="headerlink" href="#activity-3-3-performing-min-max-scaling-in-python" title="Permalink to this heading">#</a></h2>
@@ -943,7 +955,10 @@ Before we can do it - we will upload the weather dataset file we saved in Unit 2
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-1-trying-to-compare-without-scaling">Activity 3.1: Trying to Compare Without Scaling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-2-understanding-the-idea-of-scaling">Activity 3.2: Understanding the Idea of Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-2-understanding-the-idea-of-scaling">Activity 3.2: Understanding the Idea of Scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animation-3-1">Animation 3.1</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-3-performing-min-max-scaling-in-python">Activity 3.3: Performing Min Max Scaling in Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-4-re-plotting-after-scaling">Activity 3.4: Re-plotting After Scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
