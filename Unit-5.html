@@ -67,8 +67,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Unit-5';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Unit-6: : The Storyteller" href="Unit-6.html" />
-    <link rel="prev" title="Unit 4: The Predictor" href="Unit-4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -170,13 +168,23 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Unit-1.html">Unit 1: The Digital Lab Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unit-2.html">Unit 2: The Data Detective</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unit-3.html">Unit 3: The Great Equaliser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unit-4.html">Unit 4: The Predictor</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 5: The Classifier</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Unit-6.html">Unit-6: : The Storyteller</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Class 9 Lab Manual</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="class-9/Unit-1.html">Unit 1: The Digital Lab Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-9/Unit-2.html">Unit 2: The Data Detective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-9/Unit-3.html">Unit 3: The Great Equaliser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-9/Unit-4.html">Unit 4: The Predictor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-9/Unit-5.html">Unit 5: The Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-9/Unit-6.html">Unit-6: : The Storyteller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Class 10 Lab Manual</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="class-10/Unit-1.html">Unit 1: The Modeler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-10/Unit-2.html">Unit 2: The Distribution Explorer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-10/Unit-3.html">Unit 3: The Physicist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-10/Unit-4.html">Unit 4: The Risk Analyst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-10/Unit-5.html">Unit 5: The Trend Spotter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="class-10/Unit-6.html">Unit 6: The Data Journalist</a></li>
 </ul>
 
     </div>
@@ -426,7 +434,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-1-loading-a-simple-biology-dataset">Activity 5.1: Loading a Simple Biology Dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-2-plotting-the-features-on-a-graph">Activity 5.2: Plotting the Features on a Graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-3-measuring-closeness-using-the-distance-formula">Activity 5.3: Measuring Closeness Using the Distance Formula</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-4-classifying-a-new-flower">Activity 5.4: Classifying a New Flower</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-4-classifying-a-new-flower">Activity 5.4: Classifying a New Flower</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-activity-5-1">Interactive Activity 5.1</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
 </ul>
@@ -458,7 +469,7 @@ document.write(`
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>Humans have always grouped things by noticing similarities. We can tell one plant from another by looking at its leaves. We can tell one spice from another by its smell or texture. Traditional scholars used careful observation to classify herbs in Ayurveda, grains in agriculture, and even stars in the night sky. They grouped objects by their features. When two things looked similar, they belonged to the same group.</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="_images/figure5p1.png"><img alt="Description of the image" class="bg-primary mb-1 align-center" src="_images/figure5p1.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../images/figure5p1.png"><img alt="Description of the image" class="bg-primary mb-1 align-center" src="../images/figure5p1.png" style="width: 500px;" /></a>
 <p>In this unit, you will learn how a computer can do something similar. Instead of smell, shape, or texture, the computer uses numbers as features. It places these features on a graph, compares distances, and decides which examples are similar to each other. This simple idea is at the heart of many modern classification systems.</p>
 <p>You will now work with a real dataset that contains measurements of flower petals and sepals. You will plot these points, observe natural groups, and classify a new flower by checking which group it is closest to.</p>
 </section>
@@ -683,8 +694,17 @@ This means row 0 and the column called “petal length (cm)”. It returns one v
 <img alt="_images/2c16ea952a926db666a6b6b38a308705a9a8273d2a5f3b57f0309c6b3b004862.png" src="_images/2c16ea952a926db666a6b6b38a308705a9a8273d2a5f3b57f0309c6b3b004862.png" />
 </div>
 </div>
-<p>The black point shows the new flower. You will see that it sits close to one of the clusters.</p>
+<section id="interactive-activity-5-1">
+<h3>Interactive Activity 5.1<a class="headerlink" href="#interactive-activity-5-1" title="Permalink to this heading">#</a></h3>
+<iframe 
+    src="../Activities.html#iris" 
+    width="100%" 
+    height="700px" 
+    frameborder="0"
+    style="border: 1px solid #eee; border-radius: 8px;">
+</iframe><p>The black point shows the new flower. You will see that it sits close to one of the clusters.</p>
 <p>This simple method is called nearest neighbour classification.</p>
+</section>
 </section>
 <section id="practice-exercises">
 <h2>Practice Exercises<a class="headerlink" href="#practice-exercises" title="Permalink to this heading">#</a></h2>
@@ -825,24 +845,6 @@ Name: 0, dtype: float64
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="Unit-4.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Unit 4: The Predictor</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="Unit-6.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Unit-6: : The Storyteller</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -863,7 +865,10 @@ Name: 0, dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-1-loading-a-simple-biology-dataset">Activity 5.1: Loading a Simple Biology Dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-2-plotting-the-features-on-a-graph">Activity 5.2: Plotting the Features on a Graph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-3-measuring-closeness-using-the-distance-formula">Activity 5.3: Measuring Closeness Using the Distance Formula</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-4-classifying-a-new-flower">Activity 5.4: Classifying a New Flower</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-4-classifying-a-new-flower">Activity 5.4: Classifying a New Flower</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-activity-5-1">Interactive Activity 5.1</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
 </ul>
