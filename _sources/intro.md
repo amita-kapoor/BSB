@@ -47,5 +47,3 @@ Go ahead and try it! If you make a mistake or get an error, simply refresh the p
 
 **Select your Class from the sidebar to begin your experiments.**
 
-```{tableofcontents}
-```
