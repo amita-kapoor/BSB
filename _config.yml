@@ -65,9 +65,10 @@ html:
       }
     </style>
 
-    
 
-  extra_path: ["Activities.html"]  # <--- This forces the file to be copied!
+sphinx:
+  config:
+    html_extra_path: ["Activities.html"]
 
   # _config.yml
 
