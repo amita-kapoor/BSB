@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive EduLabs</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { slate: { 850: '#151e2e' } } } }
+        }
+    </script>
+    
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Sidebar Transitions */
+        #sidebar { transition: transform 0.3s ease-in-out; }
+        .sidebar-closed { transform: translateX(-100%); }
+        .sidebar-open { transform: translateX(0); }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        html.dark ::-webkit-scrollbar-thumb { background: #475569; }
+
+        /* UI Elements */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        html.dark .glass-panel {
+            background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        /* Custom Range Slider */
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%;
+            background: #3b82f6; cursor: pointer; margin-top: -6px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px; cursor: pointer; background: #e2e8f0; border-radius: 2px;
+        }
+        html.dark input[type=range]::-webkit-slider-runnable-track { background: #334155; }
+        
+        /* Instruction Box Style */
+        .instruction-box {
+            background-color: #eff6ff; /* blue-50 */
+            border: 1px solid #dbeafe; /* blue-100 */
+            color: #1e3a8a; /* blue-900 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        html.dark .instruction-box {
+            background-color: rgba(30, 58, 138, 0.2); /* dark blue bg */
+            border-color: rgba(30, 58, 138, 0.5);
+            color: #dbeafe;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 h-screen overflow-hidden flex flex-col">
+
+    <header class="w-full h-14 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700 flex items-center justify-between px-4 z-30 shrink-0">
+        <div class="flex items-center gap-4">
+            <button onclick="toggleSidebar()" class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <h1 class="font-bold text-lg hidden md:block bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Interactive EduLabs</h1>
+        </div>
+        <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Toggle Theme">
+            <span id="theme-icon">🌙</span>
+        </button>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden relative">
+        <aside id="sidebar" class="sidebar-closed absolute top-0 left-0 h-full w-72 bg-white dark:bg-slate-800 border-r border-gray-200 dark:border-slate-700 z-40 shadow-2xl overflow-y-auto flex flex-col">
+            <div class="p-4 border-b dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900">
+                <span class="font-bold text-slate-500 uppercase text-xs tracking-wider">Activities Menu</span>
+                <button onclick="toggleSidebar()" class="text-slate-400 hover:text-red-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex-1 p-2 space-y-1">
+                <a href="#linear" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">1. Equation of a Line</a>
+                <a href="#iris" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">2. Iris Classifier</a>
+                <a href="#northern" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">3. Northernmost (Map)</a>
+                <a href="#linspace" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">4. np.linspace Demo</a>
+                <a href="#dict2df" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">5. Dict to DataFrame</a>
+                <a href="#histograms" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">6. Histogram Bins</a>
+                <a href="#outliers" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">7. Mean vs Median</a>
+                <a href="#scaling" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">8. Data Scaling</a>
+                <a href="#force" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">9. Force & Accel</a>
+                <a href="#euclidean" onclick="toggleSidebar()" class="nav-item block px-4 py-3 rounded text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-700">10. Euclidean Distance</a>
+            </nav>
+        </aside>
+
+        <div id="sidebar-overlay" onclick="toggleSidebar()" class="hidden absolute inset-0 bg-black/50 z-30 transition-opacity backdrop-blur-sm"></div>
+
+        <main class="flex-1 overflow-y-auto p-4 md:p-8 relative bg-slate-50 dark:bg-slate-900 w-full">
+            <div id="content-area" class="max-w-5xl mx-auto min-h-[600px] pb-20">
+                </div>
+        </main>
+    </div>
+
+    <template id="tmpl-linear">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700">
+            <h2 class="text-2xl font-bold mb-2">Equation of a Line</h2>
+            <p class="mb-4 text-xl font-mono text-blue-600 dark:text-blue-400">\[ y = mx + c \]</p>
+            
+            <div class="instruction-box">
+                <p><strong>👉 Try this:</strong> Drag the sliders to change <em>m</em> and <em>c</em>.</p>
+                <p><strong>👀 Observe:</strong> Notice that changing <strong>m (Slope)</strong> rotates the line (steepness), while changing <strong>c (Intercept)</strong> simply lifts the line up or pushes it down without changing the angle.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="space-y-6 bg-slate-50 dark:bg-slate-700/50 p-6 rounded-lg">
+                    <div>
+                        <label class="block text-sm font-bold mb-2">m (Slope): <span id="val-m" class="text-blue-500">1</span></label>
+                        <input type="range" min="-5" max="5" step="0.1" value="1" class="w-full" oninput="updateLinear()">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2">c (Y-Intercept): <span id="val-c" class="text-green-500">0</span></label>
+                        <input type="range" min="-10" max="10" step="0.5" value="0" class="w-full" oninput="updateLinear()">
+                    </div>
+                </div>
+                <div class="md:col-span-2 border dark:border-slate-600 rounded-lg overflow-hidden h-96 relative" id="plot-linear"></div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tmpl-iris">
+        <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-4 flex flex-col gap-6">
+                <div class="glass-panel rounded-2xl p-6 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-amber-500"></div>
+                    <h2 class="text-lg font-semibold mb-4">Flower Dimensions</h2>
+                    
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mb-4 bg-white/50 dark:bg-black/20 p-2 rounded">
+                        <strong>👉 Try this:</strong> Adjust the Petal Length & Width.<br>
+                        <strong>👀 Observe:</strong> How the "predicted class" changes based on the size rules.
+                    </div>
+
+                    <div class="space-y-5">
+                        <div class="group">
+                            <div class="flex justify-between mb-1"><label class="text-xs text-slate-500">Sepal Length</label><span class="mono text-cyan-600 dark:text-cyan-400 font-bold" id="val-sl">5.0</span></div>
+                            <input type="range" id="input-sl" min="4.0" max="8.0" step="0.1" value="5.0">
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between mb-1"><label class="text-xs text-slate-500">Sepal Width</label><span class="mono text-cyan-600 dark:text-cyan-400 font-bold" id="val-sw">3.4</span></div>
+                            <input type="range" id="input-sw" min="2.0" max="4.5" step="0.1" value="3.4">
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between mb-1"><label class="text-xs text-slate-500">Petal Length</label><span class="mono text-cyan-600 dark:text-cyan-400 font-bold" id="val-pl">1.5</span></div>
+                            <input type="range" id="input-pl" min="1.0" max="7.0" step="0.1" value="1.5">
+                        </div>
+                        <div class="group">
+                            <div class="flex justify-between mb-1"><label class="text-xs text-slate-500">Petal Width</label><span class="mono text-cyan-600 dark:text-cyan-400 font-bold" id="val-pw">0.2</span></div>
+                            <input type="range" id="input-pw" min="0.1" max="2.5" step="0.1" value="0.2">
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel rounded-2xl p-6 text-center" id="result-card">
+                    <h3 class="text-xs uppercase text-slate-500 mb-4">Prediction</h3>
+                    <div id="prediction-icon" class="w-16 h-16 mx-auto rounded-full bg-slate-100 dark:bg-slate-800 border-2 flex items-center justify-center mb-3 text-3xl shadow-lg">❓</div>
+                    <h2 id="prediction-text" class="text-2xl font-bold mb-1">...</h2>
+                </div>
+            </div>
+            <div class="lg:col-span-8 flex flex-col gap-6">
+                <div class="glass-panel rounded-2xl p-1 flex flex-col h-[450px] relative">
+                    <canvas id="mainCanvas" class="w-full h-full rounded-xl cursor-crosshair"></canvas>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tmpl-northern">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700 h-full flex flex-col">
+            <h2 class="text-2xl font-bold mb-4">Northernmost Cities</h2>
+            <div class="instruction-box">
+                <p><strong>👉 Try this:</strong> Hover over the city points on the map.</p>
+                <p><strong>👀 Observe:</strong> The <strong>Latitude</strong> value (Y-axis). Cities with higher positive Latitude numbers are farther North. Cities with negative Latitude are in the Southern Hemisphere.</p>
+            </div>
+            <div id="plot-north" class="flex-1 w-full min-h-[500px] border dark:border-slate-600 rounded-lg"></div>
+        </div>
+    </template>
+
+    <template id="tmpl-linspace">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700">
+            <h2 class="text-2xl font-bold mb-4">Understanding <code>np.linspace</code></h2>
+            
+            <div class="instruction-box">
+                <p><strong>👉 Try this:</strong> Drag the slider to increase the Number of Points from 2 to 50.</p>
+                <p><strong>👀 Observe:</strong> Computers don't draw true curves. When you use few points, the line looks jagged. As you add more points, the straight lines between them become smaller, creating the <em>illusion</em> of a smooth curve.</p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4 mb-6 bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded border border-yellow-200 dark:border-yellow-700">
+                <label class="font-bold">Number of Points:</label>
+                <input type="range" id="lin-n" min="2" max="50" value="5" class="w-48" oninput="updateLinspace()">
+                <span id="lin-val" class="font-mono bg-white dark:bg-slate-700 px-2 py-1 rounded border dark:border-slate-600">5</span>
+            </div>
+            <div id="plot-linspace" class="border dark:border-slate-600 rounded-lg h-96"></div>
+        </div>
+    </template>
+
+    <template id="tmpl-dict2df">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700">
+            <h2 class="text-2xl font-bold mb-4">Dictionary to DataFrame</h2>
+            
+            <div class="instruction-box">
+                <p><strong>👉 Try this:</strong> Click the "Transform" button.</p>
+                <p><strong>👀 Observe:</strong> How the data is reorganized. The <strong>Keys</strong> (e.g., "Name") become Column Headers, and the <strong>Values</strong> (the lists) become the rows of data.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="w-full md:w-1/2">
+                    <h3 class="font-bold mb-3 text-sm uppercase text-gray-500">Python Dictionary</h3>
+                    <div class="bg-slate-800 text-green-400 p-4 rounded font-mono text-sm whitespace-pre shadow-inner">
+data = {
+  <span class="text-yellow-300">"Name"</span>: [<span id="src-n1" class="transition-all">"Alice"</span>, <span id="src-n2" class="transition-all">"Bob"</span>],
+  <span class="text-yellow-300">"Age"</span>:  [<span id="src-a1" class="transition-all">25</span>,      <span id="src-a2" class="transition-all">30</span>]
+}</div>
+                    <button onclick="animateDict()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">Transform Animation</button>
+                    <button onclick="resetDict()" class="mt-4 ml-2 bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition">Reset</button>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="font-bold mb-3 text-sm uppercase text-gray-500">Pandas DataFrame</h3>
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-slate-100 dark:bg-slate-700"><tr><th class="p-2 border dark:border-slate-600">Name</th><th class="p-2 border dark:border-slate-600">Age</th></tr></thead>
+                        <tbody class="bg-white dark:bg-slate-800">
+                            <tr><td class="p-2 border dark:border-slate-600"><span id="dest-n1" class="opacity-0 transition-opacity duration-1000">Alice</span></td><td class="p-2 border dark:border-slate-600"><span id="dest-a1" class="opacity-0 transition-opacity duration-1000">25</span></td></tr>
+                            <tr><td class="p-2 border dark:border-slate-600"><span id="dest-n2" class="opacity-0 transition-opacity duration-1000">Bob</span></td><td class="p-2 border dark:border-slate-600"><span id="dest-a2" class="opacity-0 transition-opacity duration-1000">30</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tmpl-histograms">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700">
+            <h2 class="text-2xl font-bold mb-4">Histogram Binning</h2>
+            
+            <div class="instruction-box">
+                <p><strong>👉 Try this:</strong> Drag the slider to change the number of "Bins" (groups).</p>
+                <p><strong>👀 Observe:</strong> With too few bins, you lose detail. With too many bins, the graph looks messy and gaps appear. The "shape" of the distribution depends heavily on your choice of bin size.</p>
+            </div>
+
+            <div class="mb-4">
+                <label class="font-bold">Bins: <span id="hist-val" class="text-purple-600">10</span></label>
+                <input type="range" id="hist-bins" min="2" max="50" value="10" class="w-full accent-purple-600" oninput="updateHist()">
+            </div>
+            <div id="plot-hist" class="border dark:border-slate-600 rounded-lg h-96"></div>
+        </div>
+    </template>
+
+    <template id="tmpl-outliers">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700">
+            <h2 class="text-2xl font-bold mb-4">Mean vs. Median</h2>
+            
+            <div class="instruction-box">
+                <p><strong>👉 Try this:</strong> Drag the big <span class="text-red-500 font-bold">RED</span> outlier point to the far right.</p>
+                <p><strong>👀 Observe:</strong> Watch how the <strong>Mean (Blue Line)</strong> chases the outlier, changing significantly. The <strong>Median (Green Line)</strong> stays relatively stable. This is why Median is often better for skewed data.</p>
+            </div>
+
+            <div class="flex justify-center gap-12 mb-8 text-center">
+                <div><div class="text-xs font-bold text-blue-600">Mean (Average)</div><div class="text-2xl font-mono text-blue-600" id="lbl-mean">0</div></div>
+                <div><div class="text-xs font-bold text-green-600">Median (Middle)</div><div class="text-2xl font-mono text-green-600" id="lbl-median">0</div></div>
+            </div>
+            <div class="relative h-24 bg-gray-100 dark:bg-slate-700 border dark:border-slate-600 rounded-lg w-full mb-4" id="outlier-track"></div>
+        </div>
+    </template>
+
+    <template id="tmpl-scaling">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700">
+            <h2 class="text-2xl font-bold mb-4">Data Scaling</h2>
+            
+            <div class="instruction-box">
+                <p><strong>👉 Try this:</strong> First click "Generate Raw Data", then click "Apply Scaling".</p>
+                <p><strong>👀 Observe:</strong> Look at the axes numbers. The <strong>pattern</strong> of the dots (the shape) stays exactly the same, but the values are squashed into the range of 0 to 1.</p>
+            </div>
+
+            <div class="space-x-4 mb-4">
+                <button onclick="genScaleData()" class="bg-gray-200 dark:bg-slate-600 px-4 py-2 rounded hover:bg-gray-300">1. Generate Raw</button>
+                <button onclick="applyScaling()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">2. Apply Scale</button>
+            </div>
+            <div id="plot-scale" class="border dark:border-slate-600 rounded-lg h-96"></div>
+        </div>
+    </template>
+
+    <template id="tmpl-force">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700">
+            <h2 class="text-2xl font-bold mb-2">Force & Acceleration</h2>
+            <p class="mb-2 text-xl font-mono text-blue-600 dark:text-blue-400">\[ a = \frac{F}{m} \]</p>
+            
+            <div class="instruction-box">
+                <p><strong>👉 Try this:</strong> Increase the Force or Mass using the sliders.</p>
+                <p><strong>👀 Observe:</strong> The <strong>speed of the box</strong>. Higher Force makes it accelerate faster (zoom by). Higher Mass makes it sluggish. The looping animation represents the magnitude of acceleration.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-6 bg-slate-50 dark:bg-slate-700/50 p-6 rounded-lg border dark:border-slate-600">
+                    <div>
+                        <label class="block font-bold">Mass (kg): <span id="f-mass-val">10</span></label>
+                        <input type="range" id="f-mass" min="1" max="50" value="10" class="w-full accent-orange-500" oninput="updateForce()">
+                    </div>
+                    <div>
+                        <label class="block font-bold">Force (N): <span id="f-force-val">20</span></label>
+                        <input type="range" id="f-force" min="0" max="100" value="20" class="w-full accent-blue-600" oninput="updateForce()">
+                    </div>
+                    <div class="text-center pt-4 border-t dark:border-slate-600">
+                        <div class="text-4xl font-bold text-slate-800 dark:text-white"><span id="f-acc">2.00</span> m/s²</div>
+                        <div class="text-sm text-gray-500">Calculated Acceleration</div>
+                    </div>
+                </div>
+                
+                <div class="relative bg-gray-200 dark:bg-slate-900 rounded-lg h-64 overflow-hidden border border-gray-300 dark:border-slate-600 flex items-center">
+                    <div id="box-phys" class="absolute left-0 top-1/2 transform -translate-y-1/2 w-16 h-16 bg-blue-500 rounded shadow-lg flex items-center justify-center text-white font-bold">
+                        Box
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tmpl-euclidean">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700">
+            <h2 class="text-2xl font-bold mb-4">Euclidean Distance</h2>
+            <p class="mb-4 text-xl font-mono text-blue-600 dark:text-blue-400">\[ d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2} \]</p>
+            
+            <div class="instruction-box">
+                <p><strong>👉 Try this:</strong> Drag the two dots (A and B) around the grid.</p>
+                <p><strong>👀 Observe:</strong> The blue line is the "Euclidean Distance". It's basically the hypotenuse of a triangle formed by the difference in X and the difference in Y.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="col-span-2 relative bg-white dark:bg-slate-900 border dark:border-slate-600 rounded shadow-inner h-[400px]" id="euclid-canvas-container">
+                    <canvas id="euclid-canvas" class="w-full h-full cursor-crosshair"></canvas>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 dark:bg-slate-700 rounded border dark:border-slate-600 text-center">
+                        <div class="text-sm text-slate-500">Calculated Distance</div>
+                        <div class="font-mono font-bold text-3xl text-blue-600 dark:text-blue-400" id="dist-val">0.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        // --- Sidebar ---
+        function toggleSidebar() {
+            const sb = document.getElementById('sidebar');
+            const ov = document.getElementById('sidebar-overlay');
+            if(sb.classList.contains('sidebar-closed')) {
+                sb.classList.remove('sidebar-closed'); sb.classList.add('sidebar-open');
+                ov.classList.remove('hidden');
+            } else {
+                sb.classList.remove('sidebar-open'); sb.classList.add('sidebar-closed');
+                ov.classList.add('hidden');
+            }
+        }
+
+        // --- Theme ---
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark'); html.classList.add('light'); icon.textContent = '🌙';
+            } else {
+                html.classList.remove('light'); html.classList.add('dark'); icon.textContent = '☀️';
+            }
+            initModule(window.location.hash.replace('#','') || 'linear');
+        }
+
+        function getPlotColors() {
+            const isDark = document.documentElement.classList.contains('dark');
+            return {
+                bg: 'rgba(0,0,0,0)', text: isDark ? '#e2e8f0' : '#1e293b',
+                grid: isDark ? '#334155' : '#e2e8f0', line: isDark ? '#94a3b8' : '#64748b'
+            };
+        }
+
+        // --- Router ---
+        let currentAnimFrame = null;
+        function loadRoute() {
+            if (currentAnimFrame) cancelAnimationFrame(currentAnimFrame);
+            const hash = window.location.hash || '#linear';
+            const id = hash.replace('#', '');
+            
+            document.querySelectorAll('.nav-item').forEach(el => {
+                el.classList.remove('active');
+                if(el.getAttribute('href') === hash) el.classList.add('active');
+            });
+
+            const contentDiv = document.getElementById('content-area');
+            const template = document.getElementById('tmpl-' + id);
+            
+            if (template) {
+                contentDiv.innerHTML = template.innerHTML;
+                if(window.MathJax) MathJax.typesetPromise([contentDiv]).then(()=>{});
+                setTimeout(() => initModule(id), 50); 
+            } else {
+                contentDiv.innerHTML = '<h2 class="text-xl p-4">Not Found</h2>';
+            }
+        }
+        window.addEventListener('hashchange', loadRoute);
+        window.addEventListener('load', loadRoute);
+
+        function initModule(id) {
+            if(id === 'linear') updateLinear();
+            if(id === 'linspace') updateLinspace();
+            if(id === 'histograms') updateHist();
+            if(id === 'outliers') initOutliers();
+            if(id === 'scaling') genScaleData();
+            if(id === 'force') updateForce();
+            if(id === 'iris') initIris();
+            if(id === 'northern') initNorth();
+            if(id === 'euclidean') initEuclid();
+        }
+
+        // --- Logic Functions ---
+
+        // 1. Linear
+        function updateLinear() {
+            const m = parseFloat(document.querySelector('#content-area input[min="-5"]').value);
+            const c = parseFloat(document.querySelector('#content-area input[step="0.5"]').value);
+            document.getElementById('val-m').textContent = m;
+            document.getElementById('val-c').textContent = c;
+            const pc = getPlotColors();
+            const x = [-10, 10];
+            const y = x.map(val => m * val + c);
+            Plotly.newPlot('plot-linear', [{x: x, y: y, type: 'scatter', mode: 'lines', line: {color: '#3b82f6', width: 4}}], 
+            {
+                paper_bgcolor: pc.bg, plot_bgcolor: pc.bg, font: {color: pc.text}, margin: {t:20, l:40, r:20, b:40},
+                xaxis: {range:[-10,10], title:'x', gridcolor: pc.grid}, yaxis: {range:[-15,15], title:'y', gridcolor: pc.grid}
+            }, {responsive:true, displayModeBar:false});
+        }
+
+        // 2. Iris
+        function initIris() {
+            const irisData = [];
+            for(let i=0; i<30; i++) irisData.push({sl:5+Math.random(), sw:3+Math.random(), pl:1.4+Math.random()*0.3, pw:0.2, c:'setosa'});
+            for(let i=0; i<30; i++) irisData.push({sl:6+Math.random(), sw:2.5+Math.random(), pl:4+Math.random(), pw:1.3, c:'versicolor'});
+            for(let i=0; i<30; i++) irisData.push({sl:6.5+Math.random(), sw:3+Math.random(), pl:5.5+Math.random(), pw:2.0, c:'virginica'});
+            
+            const colors = { setosa: '#10b981', versicolor: '#f59e0b', virginica: '#a855f7' };
+            const inputs = { sl:document.getElementById('input-sl'), sw:document.getElementById('input-sw'), pl:document.getElementById('input-pl'), pw:document.getElementById('input-pw') };
+            const canvas = document.getElementById('mainCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            function resize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
+            resize(); window.addEventListener('resize', resize);
+
+            function update() {
+                const s = { sl:parseFloat(inputs.sl.value), sw:parseFloat(inputs.sw.value), pl:parseFloat(inputs.pl.value), pw:parseFloat(inputs.pw.value) };
+                document.getElementById('val-sl').innerText = s.sl; document.getElementById('val-sw').innerText = s.sw;
+                document.getElementById('val-pl').innerText = s.pl; document.getElementById('val-pw').innerText = s.pw;
+                
+                let res = 'setosa';
+                if(s.pl > 2.45) { res = s.pw <= 1.75 ? 'versicolor' : 'virginica'; }
+                
+                const txt = document.getElementById('prediction-text');
+                const ico = document.getElementById('prediction-icon');
+                txt.innerText = res.charAt(0).toUpperCase() + res.slice(1);
+                txt.style.color = colors[res];
+                ico.style.borderColor = colors[res];
+                ico.innerText = res === 'setosa' ? '🌱' : (res === 'versicolor' ? '🌾' : '🌺');
+                return s;
+            }
+
+            function draw() {
+                if(!document.getElementById('mainCanvas')) return;
+                const w = canvas.width, h = canvas.height;
+                const st = update();
+                const isDark = document.documentElement.classList.contains('dark');
+                
+                ctx.clearRect(0,0,w,h);
+                const mx = v => 40 + ((v-1)/6)*(w-60);
+                const my = v => h - 40 - (v/2.5)*(h-60);
+                
+                ctx.strokeStyle = isDark ? '#334155' : '#e2e8f0';
+                ctx.beginPath();
+                for(let i=1; i<=7; i++) { ctx.moveTo(mx(i),20); ctx.lineTo(mx(i),h-20); }
+                for(let i=0; i<=2.5; i+=0.5) { ctx.moveTo(20,my(i)); ctx.lineTo(w-20,my(i)); }
+                ctx.stroke();
+
+                irisData.forEach(p => { ctx.fillStyle = colors[p.c]; ctx.beginPath(); ctx.arc(mx(p.pl), my(p.pw), 4, 0, Math.PI*2); ctx.fill(); });
+                
+                const ux = mx(st.pl), uy = my(st.pw);
+                ctx.beginPath(); ctx.arc(ux, uy, 8 + Math.sin(Date.now()/300)*3, 0, Math.PI*2);
+                ctx.strokeStyle = '#38bdf8'; ctx.stroke();
+                ctx.fillStyle = 'white'; ctx.beginPath(); ctx.arc(ux, uy, 5, 0, Math.PI*2); ctx.fill();
+                currentAnimFrame = requestAnimationFrame(draw);
+            }
+            Object.values(inputs).forEach(e => e.addEventListener('input', update));
+            draw();
+        }
+
+        // 3. North
+        function initNorth() {
+            const pc = getPlotColors();
+            const cities = [ {n:'Oslo',lat:60,lon:10}, {n:'London',lat:51,lon:-0.1}, {n:'NY',lat:40,lon:-74}, {n:'Rio',lat:-22,lon:-43}, {n:'Tokyo',lat:35,lon:139}, {n:'Sydney',lat:-33,lon:151} ];
+            Plotly.newPlot('plot-north', [{
+                type: 'scattergeo', mode: 'markers+text', text: cities.map(c=>c.n), lon: cities.map(c=>c.lon), lat: cities.map(c=>c.lat),
+                marker: { size: 12, color: cities.map(c=>c.lat), colorscale: 'Plasma', line:{color:'white',width:1} }
+            }], {
+                geo: { scope:'world', showland:true, landcolor: document.documentElement.classList.contains('dark')?'#1e293b':'#e2e8f0', bgcolor:pc.bg },
+                paper_bgcolor: pc.bg, font:{color:pc.text}, margin:{t:0,b:0,l:0,r:0}
+            }, {responsive:true, displayModeBar:false});
+        }
+
+        // 4. Linspace
+        function updateLinspace() {
+            const n = parseInt(document.getElementById('lin-n').value);
+            document.getElementById('lin-val').textContent = n;
+            const pc = getPlotColors();
+            const x = [], y = []; const step = 10/(n-1);
+            for(let i=0; i<n; i++) { let v=i*step; x.push(v); y.push(Math.sin(v)); }
+            Plotly.newPlot('plot-linspace', [ {x:x, y:y, mode:'markers', marker:{size:10,color:'#ef4444'}}, {x:x, y:y, mode:'lines', line:{color:pc.line,dash:'dash'}} ],
+            { paper_bgcolor:pc.bg, plot_bgcolor:pc.bg, font:{color:pc.text}, xaxis:{gridcolor:pc.grid}, yaxis:{gridcolor:pc.grid}, margin:{t:20} }, {responsive:true, displayModeBar:false});
+        }
+
+        // 5. Dict
+        function animateDict() { ['n1','n2','a1','a2'].forEach((id,i) => setTimeout(()=>document.getElementById('dest-'+id).classList.remove('opacity-0'), i*300)); }
+        function resetDict() { ['n1','n2','a1','a2'].forEach(id => document.getElementById('dest-'+id).classList.add('opacity-0')); }
+
+        // 6. Hist
+        let rawData = Array.from({length:500}, () => Math.random()*5 + Math.random()*5);
+        function updateHist() {
+            const b = parseInt(document.getElementById('hist-bins').value);
+            document.getElementById('hist-val').textContent = b;
+            const pc = getPlotColors();
+            Plotly.newPlot('plot-hist', [{x:rawData, type:'histogram', nbinsx:b, marker:{color:'#8b5cf6', line:{color:pc.bg, width:1}}}],
+            { paper_bgcolor:pc.bg, plot_bgcolor:pc.bg, font:{color:pc.text}, xaxis:{gridcolor:pc.grid}, yaxis:{gridcolor:pc.grid}, margin:{t:20} }, {responsive:true, displayModeBar:false});
+        }
+
+        // 7. Outliers
+        let pts = [10,12,11,13,12,11,14,12,100];
+        function initOutliers() { renderMM(); }
+        function renderMM() {
+            const c = document.getElementById('outlier-track'); if(!c) return;
+            c.innerHTML = '';
+            const mean = pts.reduce((a,b)=>a+b,0)/pts.length;
+            const med = [...pts].sort((a,b)=>a-b)[Math.floor(pts.length/2)];
+            document.getElementById('lbl-mean').textContent = mean.toFixed(1);
+            document.getElementById('lbl-median').textContent = med.toFixed(1);
+            
+            pts.forEach((p,i) => {
+                const el = document.createElement('div');
+                el.className = i===pts.length-1 ? 'absolute w-6 h-6 bg-red-500 border-4 border-white dark:border-slate-800 shadow rounded-full top-1/2 -translate-y-1/2 -translate-x-1/2 cursor-ew-resize z-10' : 'absolute w-4 h-4 bg-gray-400 dark:bg-slate-400 rounded-full top-1/2 -translate-y-1/2 -translate-x-1/2';
+                el.style.left = (p/150*100)+'%';
+                if(i===pts.length-1) el.onmousedown = (e) => {
+                    const rect = c.getBoundingClientRect();
+                    const mv = ev => { let x = ev.clientX-rect.left; if(x<0)x=0; if(x>rect.width)x=rect.width; pts[pts.length-1]=(x/rect.width)*150; renderMM(); };
+                    const up = () => { document.removeEventListener('mousemove',mv); document.removeEventListener('mouseup',up); };
+                    document.addEventListener('mousemove',mv); document.addEventListener('mouseup',up);
+                };
+                c.appendChild(el);
+            });
+            // Lines
+            ['blue','green'].forEach((color, i) => {
+                const val = i===0 ? mean : med;
+                const l = document.createElement('div');
+                l.className = `absolute h-full w-1 bg-${color}-500 top-0 opacity-50`;
+                l.style.left = (val/150*100)+'%';
+                c.appendChild(l);
+            });
+        }
+
+        // 8. Scale
+        let scX=[], scY=[];
+        function genScaleData() { scX=Array.from({length:20},()=>Math.random()*100+50); scY=Array.from({length:20},()=>Math.random()*1000+2000); plotScale(scX,scY); }
+        function applyScaling() { const mnX=Math.min(...scX), rX=Math.max(...scX)-mnX; const mnY=Math.min(...scY), rY=Math.max(...scY)-mnY; plotScale(scX.map(v=>(v-mnX)/rX), scY.map(v=>(v-mnY)/rY)); }
+        function plotScale(x,y) { const pc=getPlotColors(); Plotly.newPlot('plot-scale',[{x:x,y:y,mode:'markers',marker:{size:12,color:'#0ea5e9'}}], {paper_bgcolor:pc.bg, plot_bgcolor:pc.bg, font:{color:pc.text}, xaxis:{gridcolor:pc.grid}, yaxis:{gridcolor:pc.grid}}, {responsive:true, displayModeBar:false}); }
+
+        // 9. Force
+        function updateForce() {
+            const m = parseFloat(document.getElementById('f-mass').value);
+            const f = parseFloat(document.getElementById('f-force').value);
+            const a = f / m;
+            document.getElementById('f-mass-val').textContent = m;
+            document.getElementById('f-force-val').textContent = f;
+            document.getElementById('f-acc').textContent = a.toFixed(2);
+            const box = document.getElementById('box-phys');
+            box.getAnimations().forEach(anim => anim.cancel());
+            if(a > 0.1) {
+                box.animate([ { transform: 'translate(-50%, -50%)' }, { transform: 'translate(400%, -50%)' } ], 
+                { duration: 2000/Math.sqrt(a), iterations: Infinity });
+            }
+        }
+
+        // 10. Euclid
+        let ep1={x:50,y:300}, ep2={x:300,y:100}, dPt=null;
+        function initEuclid() {
+            const cv=document.getElementById('euclid-canvas'); if(!cv)return;
+            const ctx=cv.getContext('2d');
+            function dr() {
+                if(!document.getElementById('euclid-canvas')) return;
+                const w=cv.width=cv.parentElement.offsetWidth, h=cv.height=cv.parentElement.offsetHeight;
+                ctx.clearRect(0,0,w,h);
+                const isD = document.documentElement.classList.contains('dark');
+                ctx.strokeStyle=isD?'#334155':'#e2e8f0'; ctx.beginPath(); for(let i=0;i<w;i+=20){ctx.moveTo(i,0);ctx.lineTo(i,h);} for(let i=0;i<h;i+=20){ctx.moveTo(0,i);ctx.lineTo(w,i);} ctx.stroke();
+                ctx.strokeStyle='#2563eb'; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(ep1.x,ep1.y); ctx.lineTo(ep2.x,ep2.y); ctx.stroke();
+                ctx.fillStyle='#ef4444'; ctx.beginPath(); ctx.arc(ep1.x,ep1.y,8,0,7); ctx.fill();
+                ctx.fillStyle='#3b82f6'; ctx.beginPath(); ctx.arc(ep2.x,ep2.y,8,0,7); ctx.fill();
+                document.getElementById('dist-val').textContent = (Math.hypot((ep1.x-ep2.x)/10, (ep1.y-ep2.y)/10)).toFixed(2);
+            }
+            cv.onmousedown = e => { const r=cv.getBoundingClientRect(); if(Math.hypot(e.clientX-r.left-ep1.x, e.clientY-r.top-ep1.y)<20) dPt='1'; else if(Math.hypot(e.clientX-r.left-ep2.x, e.clientY-r.top-ep2.y)<20) dPt='2'; };
+            window.addEventListener('mousemove', e => { if(!dPt)return; const r=cv.getBoundingClientRect(); if(dPt==='1'){ep1.x=e.clientX-r.left;ep1.y=e.clientY-r.top} else{ep2.x=e.clientX-r.left;ep2.y=e.clientY-r.top} dr(); });
+            window.addEventListener('mouseup', ()=>dPt=null);
+            window.addEventListener('resize', dr); dr();
+        }
+
+    
+if (window.self !== window.top) {
+    // We are inside an iframe!
+    document.querySelector('header').style.display = 'none'; // Hide Top Bar
+    document.getElementById('sidebar').style.display = 'none'; // Hide Sidebar
+    // Force content to full width
+    document.querySelector('main').classList.remove('md:p-8');
+    document.querySelector('main').classList.add('p-0');
+}
+    </script>
+</body>
+</html>
