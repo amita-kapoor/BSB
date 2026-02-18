@@ -65,3 +65,9 @@ html:
       }
     </style>
 
+    
+
+  extra_path: ["Activities.html"]  # <--- This forces the file to be copied!
+
+  # _config.yml
+
