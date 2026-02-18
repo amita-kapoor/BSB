@@ -3,12 +3,23 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: Unit-1
-- file: Unit-2
-- file: Unit-3
-- file: Unit-4
-- file: Unit-5
-- file: Unit-6
+
+parts:
+  - caption: Class 9 Lab Manual
+    chapters:
+    - file: Unit-1
+    - file: Unit-2
+    - file: Unit-3
+    - file: Unit-4
+    - file: Unit-5
+    - file: Unit-6
+  - caption: Class 10 Lab Manual
+    chapters:
+    - file: Unit-1
+    - file: Unit-2
+    - file: Unit-3
+    - file: Unit-4
+    - file: Unit-5
+    - file: Unit-6
 
 
