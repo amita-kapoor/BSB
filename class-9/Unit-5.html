@@ -1,0 +1,957 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Unit 5: The Classifier &#8212; Lab Manual - Data Analysis and Visualisation - Class IX</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'class-9/Unit-5';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Unit-6: : The Storyteller" href="Unit-6.html" />
+    <link rel="prev" title="Unit 4: The Predictor" href="Unit-4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Class 9 Lab Manual</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit-1.html">Unit 1: The Digital Lab Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-2.html">Unit 2: The Data Detective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-3.html">Unit 3: The Great Equaliser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-4.html">Unit 4: The Predictor</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 5: The Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-6.html">Unit-6: : The Storyteller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Class 10 Lab Manual</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-1.html">Unit 1: The Modeler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-2.html">Unit 2: The Distribution Explorer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-3.html">Unit 3: The Physicist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-4.html">Unit 4: The Risk Analyst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-5.html">Unit 5: The Trend Spotter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-6.html">Unit 6: The Data Journalist</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/amita-kapoor/BSB/main?urlpath=lab/tree/./class-9/Unit-5.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/amita-kapoor/BSB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/amita-kapoor/BSB/issues/new?title=Issue%20on%20page%20%2Fclass-9/Unit-5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/class-9/Unit-5.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 5: The Classifier</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-1-loading-a-simple-biology-dataset">Activity 5.1: Loading a Simple Biology Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-2-plotting-the-features-on-a-graph">Activity 5.2: Plotting the Features on a Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-3-measuring-closeness-using-the-distance-formula">Activity 5.3: Measuring Closeness Using the Distance Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-4-classifying-a-new-flower">Activity 5.4: Classifying a New Flower</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-activity-5-1">Interactive Activity 5.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-5-the-classifier">
+<h1>Unit 5: The Classifier<a class="headerlink" href="#unit-5-the-classifier" title="Permalink to this heading">#</a></h1>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
+<p>By the end of this unit, students will be capable of:</p>
+<ul class="simple">
+<li><p>Plotting two features of a dataset to observe natural clusters</p></li>
+<li><p>Applying the distance formula to measure similarity between data points</p></li>
+<li><p>Classifying a new data point using the nearest neighbour method</p></li>
+<li><p>Justifying classification decisions using distance and visual evidence.</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Humans have always grouped things by noticing similarities. We can tell one plant from another by looking at its leaves. We can tell one spice from another by its smell or texture. Traditional scholars used careful observation to classify herbs in Ayurveda, grains in agriculture, and even stars in the night sky. They grouped objects by their features. When two things looked similar, they belonged to the same group.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="class-9/images/figure5p1.png"><img alt="Description of the image" class="bg-primary mb-1 align-center" src="class-9/images/figure5p1.png" style="width: 500px;" /></a>
+<p>In this unit, you will learn how a computer can do something similar. Instead of smell, shape, or texture, the computer uses numbers as features. It places these features on a graph, compares distances, and decides which examples are similar to each other. This simple idea is at the heart of many modern classification systems.</p>
+<p>You will now work with a real dataset that contains measurements of flower petals and sepals. You will plot these points, observe natural groups, and classify a new flower by checking which group it is closest to.</p>
+</section>
+<section id="activity-5-1-loading-a-simple-biology-dataset">
+<h2>Activity 5.1: Loading a Simple Biology Dataset<a class="headerlink" href="#activity-5-1-loading-a-simple-biology-dataset" title="Permalink to this heading">#</a></h2>
+<p>The Iris dataset is one of the most famous small datasets used for learning classification. It contains measurements of 150 iris flowers. Each flower belongs to one of three species:</p>
+<ul class="simple">
+<li><p>0 means setosa</p></li>
+<li><p>1 means versicolor</p></li>
+<li><p>2 means virginica</p></li>
+</ul>
+<p>Each flower has four measurements:</p>
+<ul class="simple">
+<li><p>sepal length</p></li>
+<li><p>sepal width</p></li>
+<li><p>petal length</p></li>
+<li><p>petal width</p></li>
+</ul>
+<a class="bg-primary mb-1 reference internal image-reference" href="class-9/images/figure5p2.png"><img alt="Description of the image" class="bg-primary mb-1 align-center" src="class-9/images/figure5p2.png" style="width: 500px;" /></a>
+<p>We will use only two of them (petal length and petal width) so that we can easily make a graph.</p>
+<p>Here is how to load the dataset into a pandas DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal length (cm)</th>
+      <th>sepal width (cm)</th>
+      <th>petal length (cm)</th>
+      <th>petal width (cm)</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The column called species has values 0, 1, and 2. These are numeric labels for the three Iris species. Later, you will see how they form natural groups on a graph.</p>
+<p>For now, notice that each row is one flower and each column is one measurement.</p>
+<blockquote>
+<div><p><strong><em>NOTE</em>:</strong>
+When you use the command <code class="docutils literal notranslate"><span class="pre">df.head()</span></code>, Python shows only the top 5 rows of the table. This is helpful because the Iris dataset has <code class="docutils literal notranslate"><span class="pre">150</span></code> rows, which is too many to display at once. The <code class="docutils literal notranslate"><span class="pre">head()</span></code> function lets you take a quick look at the beginning of the dataset without filling your whole screen.
+If you want to see more rows, you can change the number inside the parentheses. For example:  <code class="docutils literal notranslate"><span class="pre">df.head(10)</span></code> shows the top 10 rows.
+If you want to look at the last few rows instead of the first, you can use the tail() function: <code class="docutils literal notranslate"><span class="pre">df.tail()</span></code> This shows the bottom 5 rows. These small tools help you explore big datasets in a manageable way.</p>
+</div></blockquote>
+</section>
+<section id="activity-5-2-plotting-the-features-on-a-graph">
+<h2>Activity 5.2: Plotting the Features on a Graph<a class="headerlink" href="#activity-5-2-plotting-the-features-on-a-graph" title="Permalink to this heading">#</a></h2>
+<p>To see how the flowers are grouped, you will create a scatter plot using petal length and petal width.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal length (cm)&quot;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal width (cm)&quot;</span><span class="p">]</span>
+
+<span class="n">species</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">species</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Petal Length (cm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Petal Width (cm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Petal Width vs Petal Length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2373b1992ff2ab87a3099611f35e2577f85572ac856dcbac00041a8e0606ed90.png" src="../_images/2373b1992ff2ab87a3099611f35e2577f85572ac856dcbac00041a8e0606ed90.png" />
+</div>
+</div>
+<p>The colors show the three species. You will notice that the points are not mixed randomly. They form small clusters, each cluster representing one species. This is how the computer begins to understand groups. Points that sit close together on the graph usually belong to the same class.</p>
+</section>
+<section id="activity-5-3-measuring-closeness-using-the-distance-formula">
+<h2>Activity 5.3: Measuring Closeness Using the Distance Formula<a class="headerlink" href="#activity-5-3-measuring-closeness-using-the-distance-formula" title="Permalink to this heading">#</a></h2>
+<p>To classify a new flower, the computer checks which known flower it is closest to. To measure closeness, we use the distance formula you already know from coordinate geometry.</p>
+<p>If a point is at <code class="docutils literal notranslate"><span class="pre">(x1,</span> <span class="pre">y1)</span></code> and another point is at <code class="docutils literal notranslate"><span class="pre">(x2,</span> <span class="pre">y2)</span></code>, the distance between them is:
+$<span class="math notranslate nohighlight">\( d = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\)</span>$</p>
+<p>Now pick a new, unknown flower. Let us define its measurements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_petal_length</span> <span class="o">=</span> <span class="mf">4.8</span>
+<span class="n">new_petal_width</span> <span class="o">=</span> <span class="mf">1.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, measure its distance to every flower in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distances</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal length (cm)&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">new_petal_length</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> 
+             <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal width (cm)&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">new_petal_width</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+
+<span class="n">distances</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    3.640055
+1    3.640055
+2    3.733631
+3    3.546830
+4    3.640055
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>You now have a list of distances from the new flower to all known flowers.</p>
+</section>
+<section id="activity-5-4-classifying-a-new-flower">
+<h2>Activity 5.4: Classifying a New Flower<a class="headerlink" href="#activity-5-4-classifying-a-new-flower" title="Permalink to this heading">#</a></h2>
+<p>To classify the new flower, find which known flower is the closest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index_of_closest</span> <span class="o">=</span> <span class="n">distances</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index_of_closest</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sepal length (cm)    6.7
+sepal width (cm)     3.1
+petal length (cm)    4.7
+petal width (cm)     1.5
+species              1.0
+Name: 86, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look at the species value in that row. Since the closest flower belongs to that species, the new flower is also likely to belong to the same species.</p>
+<blockquote>
+<div><p><strong><em>NOTE</em>:</strong> The command <code class="docutils literal notranslate"><span class="pre">df.loc[index_of_closest]</span></code> is how we ask pandas to show the row at a specific position in the table. The word <code class="docutils literal notranslate"><span class="pre">loc</span></code> means “locate”. When you give it a row number, it returns the entire row from the DataFrame. For example: <code class="docutils literal notranslate"><span class="pre">df.loc[0]</span></code>
+shows the first row.
+If the value stored in index_of_closest is 42, then: <code class="docutils literal notranslate"><span class="pre">df.loc[index_of_closest]</span></code> shows row number 42. This is helpful because once we know which flower is closest to the new one, we can locate that flower’s data and check its species. You can also use loc to select a specific cell, like this: <code class="docutils literal notranslate"><span class="pre">df.loc[0,</span> <span class="pre">&quot;petal</span> <span class="pre">length</span> <span class="pre">(cm)&quot;]</span></code>
+This means row 0 and the column called “petal length (cm)”. It returns one value. This is how pandas lets you quickly find the exact information you need inside a large table.</p>
+</div></blockquote>
+<p>You can also plot the new flower on the graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">species</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">new_petal_length</span><span class="p">],</span> <span class="p">[</span><span class="n">new_petal_width</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Petal Length (cm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Petal Width (cm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Classifying a New Flower by Nearest Neighbour&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2c16ea952a926db666a6b6b38a308705a9a8273d2a5f3b57f0309c6b3b004862.png" src="../_images/2c16ea952a926db666a6b6b38a308705a9a8273d2a5f3b57f0309c6b3b004862.png" />
+</div>
+</div>
+<section id="interactive-activity-5-1">
+<h3>Interactive Activity 5.1<a class="headerlink" href="#interactive-activity-5-1" title="Permalink to this heading">#</a></h3>
+<iframe 
+    src="Activities.html#iris" 
+    width="100%" 
+    height="700px" 
+    frameborder="0"
+    style="border: 1px solid #eee; border-radius: 8px;">
+</iframe><p>The black point shows the new flower. You will see that it sits close to one of the clusters.</p>
+<p>This simple method is called nearest neighbour classification.</p>
+</section>
+</section>
+<section id="practice-exercises">
+<h2>Practice Exercises<a class="headerlink" href="#practice-exercises" title="Permalink to this heading">#</a></h2>
+<p>Try the tasks below to deepen your understanding.</p>
+<ol class="arabic simple">
+<li><p>Change the new flower’s measurements and classify it again.
+<em>Hint: Try values like 1.4 and 0.2.</em></p></li>
+<li><p>Compute the distance between any two specific flowers in the dataset.
+<em>Hint: Use the same formula with the chosen rows.</em></p></li>
+<li><p>Pick a flower from species 0 and one from species 2. Plot them on the graph.
+<em>Hint: Use plt.scatter with single points.</em></p></li>
+<li><p>Create a new point that sits in the middle of two clusters. What happens when you classify it?
+<em>Hint: Use values halfway between group centers.</em></p></li>
+<li><p>Add a third feature to the distance formula to see if classification changes.
+<em>Hint: Include sepal length if you wish to experiment.</em></p></li>
+</ol>
+<section id="solutions">
+<h3>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Changing measurements and classifying:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_petal_length</span> <span class="o">=</span> <span class="mf">1.4</span>
+<span class="n">new_petal_width</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">distances</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal length (cm)&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">new_petal_length</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> 
+             <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal width (cm)&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">new_petal_width</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">distances</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sepal length (cm)    5.1
+sepal width (cm)     3.5
+petal length (cm)    1.4
+petal width (cm)     0.2
+species              0.0
+Name: 0, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Distance between two known flowers:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">j</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;petal length (cm)&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;petal width (cm)&quot;</span><span class="p">]</span>
+<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="s2">&quot;petal length (cm)&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="s2">&quot;petal width (cm)&quot;</span><span class="p">]</span>
+
+<span class="p">((</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.511409973215888
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Plotting two chosen points:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">species</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;petal length (cm)&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;petal width (cm)&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;petal length (cm)&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;petal width (cm)&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f8b76f08bac201fe350d6115ecea35c57ef42fa3714231873087534c88cb460a.png" src="../_images/f8b76f08bac201fe350d6115ecea35c57ef42fa3714231873087534c88cb460a.png" />
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>A midpoint flower often lies between groups and may confuse the simple nearest neighbour method. This shows why classification is sometimes challenging.</p></li>
+<li><p>Adding a third feature:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distances_3d</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal length (cm)&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">new_petal_length</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> 
+                <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal width (cm)&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">new_petal_width</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+                <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sepal length (cm)&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">5.0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Classification may change if the third feature is very different.</p>
+</section>
+</section>
+<section id="reflection">
+<h2>Reflection<a class="headerlink" href="#reflection" title="Permalink to this heading">#</a></h2>
+<p>Take a moment to think about what you saw in this unit.</p>
+<ul class="simple">
+<li><p>How did the scatter plot help you see clusters in the data</p></li>
+<li><p>Why do points that are close together usually belong to the same group</p></li>
+<li><p>How does the distance formula give the computer a sense of closeness</p></li>
+<li><p>Where in real life have you seen groups of similar things</p></li>
+<li><p>How is this idea related to traditional ways of grouping plants, grains, or spices</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "amita-kapoor/BSB",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "mlp"
+        },
+        kernelOptions: {
+            name: "mlp",
+            path: "./class-9"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'mlp'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit-4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 4: The Predictor</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit-6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit-6: : The Storyteller</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-1-loading-a-simple-biology-dataset">Activity 5.1: Loading a Simple Biology Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-2-plotting-the-features-on-a-graph">Activity 5.2: Plotting the Features on a Graph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-3-measuring-closeness-using-the-distance-formula">Activity 5.3: Measuring Closeness Using the Distance Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-5-4-classifying-a-new-flower">Activity 5.4: Classifying a New Flower</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-activity-5-1">Interactive Activity 5.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bhartiya Shiksha Board
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="text-align: center;">
+  &copy; 2026 Bhartiya Shiksha Board. All rights reserved.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

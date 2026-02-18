@@ -1,0 +1,1039 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Unit 3: The Great Equaliser &#8212; Lab Manual - Data Analysis and Visualisation - Class IX</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'class-9/Unit-3';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Unit 4: The Predictor" href="Unit-4.html" />
+    <link rel="prev" title="Unit 2: The Data Detective" href="Unit-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Class 9 Lab Manual</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit-1.html">Unit 1: The Digital Lab Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-2.html">Unit 2: The Data Detective</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 3: The Great Equaliser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-4.html">Unit 4: The Predictor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-5.html">Unit 5: The Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-6.html">Unit-6: : The Storyteller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Class 10 Lab Manual</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-1.html">Unit 1: The Modeler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-2.html">Unit 2: The Distribution Explorer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-3.html">Unit 3: The Physicist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-4.html">Unit 4: The Risk Analyst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-5.html">Unit 5: The Trend Spotter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-10/Unit-6.html">Unit 6: The Data Journalist</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/amita-kapoor/BSB/main?urlpath=lab/tree/./class-9/Unit-3.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/amita-kapoor/BSB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/amita-kapoor/BSB/issues/new?title=Issue%20on%20page%20%2Fclass-9/Unit-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/class-9/Unit-3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 3: The Great Equaliser</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-1-trying-to-compare-without-scaling">Activity 3.1: Trying to Compare Without Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-2-understanding-the-idea-of-scaling">Activity 3.2: Understanding the Idea of Scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animation-3-1">Animation 3.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-3-performing-min-max-scaling-in-python">Activity 3.3: Performing Min Max Scaling in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-4-re-plotting-after-scaling">Activity 3.4: Re-plotting After Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-3-the-great-equaliser">
+<h1>Unit 3: The Great Equaliser<a class="headerlink" href="#unit-3-the-great-equaliser" title="Permalink to this heading">#</a></h1>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
+<p>By the end of this unit, students will be capable of:</p>
+<ul class="simple">
+<li><p>Recognising why data with different scales cannot be compared directly.</p></li>
+<li><p>Applying Min–Max scaling to numerical data.</p></li>
+<li><p>Comparing original and scaled data using graphs.</p></li>
+<li><p>Explaining how scaling enables fair comparison between quantities.</p></li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eFe2R0fnMAs?si=IfFmO-INuifM25VT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>In the last unit, you explored a small weather dataset and learned how to describe it using statistics and simple visualisations. Now you will try something new. You will compare two different columns in the same graph.</p>
+<p>Before you begin, think about this simple idea. In many Indian knowledge traditions, balance and proportion were considered important for understanding the world. Whether it was the ratio of ingredients in Ayurveda, the harmony of notes in classical music, or the careful measurement of shadows in ancient astronomy, scholars always paid attention to how different quantities relate to each other.</p>
+<p>In the same way, when you compare numbers in a dataset, you must be careful about proportions. Some numbers may be small, like daily temperatures. Some may be large, like air pressure. If you try to compare them directly in a single graph, the larger numbers will dominate the picture and the smaller numbers will look almost invisible. To make a fair comparison, you need a way to place them on similar scales. This is called scaling.</p>
+<p>You will now see this problem for yourself and then learn how to solve it.</p>
+</section>
+<section id="activity-3-1-trying-to-compare-without-scaling">
+<h2>Activity 3.1: Trying to Compare Without Scaling<a class="headerlink" href="#activity-3-1-trying-to-compare-without-scaling" title="Permalink to this heading">#</a></h2>
+<p>We will begin with a simple attempt. You will plot Temperature and Air Pressure on the same graph.
+Before we can do it - we will upload the weather dataset file we saved in Unit 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;weather_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Air Pressure&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Day&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Temperature and Air Pressure on the Same Graph&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/48a329dbd3cd4737d17b90d35ee0e8577e47c277f5ac997dfe9f4397d43ecf49.png" src="../_images/48a329dbd3cd4737d17b90d35ee0e8577e47c277f5ac997dfe9f4397d43ecf49.png" />
+</div>
+</div>
+<p>When you run this, you will notice something unusual. The line for Air Pressure sits high up on the graph, while the line for Temperature looks almost flat near the bottom. The two lines cannot be compared properly because their numbers live in very different ranges. Temperature values go from about 22 to 28. Air Pressure values go from about 1010 to 1014.</p>
+<p>This is the same as trying to compare the height of a pencil to the height of a building using the same measuring stick. The building will always dominate the picture, and the pencil will seem almost invisible.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="class-9/images/figure3.1.png"><img alt="Description of the image" class="bg-primary mb-1 align-center" src="class-9/images/figure3.1.png" style="width: 300px;" /></a>
+<p>This is why you need a method that equalises the scale.</p>
+</section>
+<section id="activity-3-2-understanding-the-idea-of-scaling">
+<h2>Activity 3.2: Understanding the Idea of Scaling<a class="headerlink" href="#activity-3-2-understanding-the-idea-of-scaling" title="Permalink to this heading">#</a></h2>
+<p>Scaling is a simple idea. You take a list of numbers and convert them into a new list where the smallest value becomes 0 and the largest value becomes 1. Everything else falls somewhere between 0 and 1. The relative relationships stay the same, but the scale becomes equal.</p>
+<p>This idea is very similar to ratios, which you have already learned in mathematics. A ratio compares quantities by reducing them to a simpler form. Scaling also reduces numbers to a simpler, common form so that they can be compared fairly.</p>
+<p>The most common scaling method is called Min Max scaling. You do not need to memorise a formula. You only need to understand that scaling helps the computer place different columns on the same level without changing their basic behaviour.</p>
+<p>Now you will apply scaling to the Temperature and Air Pressure columns.</p>
+<section id="animation-3-1">
+<h3>Animation 3.1<a class="headerlink" href="#animation-3-1" title="Permalink to this heading">#</a></h3>
+<p>The animation shows how min–max scaling works step by step.
+It first displays the original data values on a number line and highlights the smallest and largest values.</p>
+<p>Next, each value is rescaled so that all values lie between 0 and 1. As this happens, the positions of the points change, but their order remains the same.</p>
+<p>This makes it clear that min–max scaling changes the scale of the data, not the pattern or relationships within it.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+</section>
+</section>
+<section id="activity-3-3-performing-min-max-scaling-in-python">
+<h2>Activity 3.3: Performing Min Max Scaling in Python<a class="headerlink" href="#activity-3-3-performing-min-max-scaling-in-python" title="Permalink to this heading">#</a></h2>
+<p>To scale a column, you subtract the minimum value and divide by the range.</p>
+<p>Here is how to scale Temperature:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_min</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">temp_max</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature_scaled&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">temp_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">temp_max</span> <span class="o">-</span> <span class="n">temp_min</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="s2">&quot;Temperature_scaled&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>Temperature_scaled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>24</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25</td>
+      <td>0.500000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23</td>
+      <td>0.166667</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>26</td>
+      <td>0.666667</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>27</td>
+      <td>0.833333</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>28</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>24</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>22</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>23</td>
+      <td>0.166667</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now do the same for Air Pressure:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">press_min</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">press_max</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure_scaled&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">press_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">press_max</span> <span class="o">-</span> <span class="n">press_min</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;AirPressure&quot;</span><span class="p">,</span> <span class="s2">&quot;AirPressure_scaled&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AirPressure</th>
+      <th>AirPressure_scaled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1012</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1010</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1011</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1013</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1014</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1012</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1011</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1013</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1010</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1012</td>
+      <td>0.50</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Look at the new values. The smallest original value becomes 0. The largest becomes 1. Everything else falls between 0 and 1. The meaning of the data has not changed. Only the scale has changed.</p>
+<p>This lets you compare the two columns more fairly.</p>
+</section>
+<section id="activity-3-4-re-plotting-after-scaling">
+<h2>Activity 3.4: Re-plotting After Scaling<a class="headerlink" href="#activity-3-4-re-plotting-after-scaling" title="Permalink to this heading">#</a></h2>
+<p>Now you will create the same plot as before, but using the scaled columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature_scaled&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Temperature (scaled)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure_scaled&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Air Pressure (scaled)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Day&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scaled Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scaled Temperature and Air Pressure&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d40f4ec0b861abf0b74b5b725f30fbfa3744826908499e186367d338feed72c7.png" src="../_images/d40f4ec0b861abf0b74b5b725f30fbfa3744826908499e186367d338feed72c7.png" />
+</div>
+</div>
+<p>This time, both lines appear in a similar range. You can clearly see how the Temperature and Air Pressure change over the ten days. Neither line hides the other. Both are visible and fair to compare.</p>
+<p>Scaling does not change the story of the data. It only brings the characters to the same stage, so you can see how they move together.</p>
+</section>
+<section id="practice-exercises">
+<h2>Practice Exercises<a class="headerlink" href="#practice-exercises" title="Permalink to this heading">#</a></h2>
+<p>Try these exercises to strengthen your understanding. Solutions are provided below each question.</p>
+<ol class="arabic">
+<li><p>What are the minimum and maximum values of the Temperature and Air Pressure columns?</p>
+<p>Hint: Use <code class="docutils literal notranslate"><span class="pre">df[&quot;Temperature&quot;].min()</span></code> and <code class="docutils literal notranslate"><span class="pre">df[&quot;Temperature&quot;].max()</span></code>.</p>
+</li>
+<li><p>After scaling, what value becomes 0 and what value becomes 1 in each column?</p>
+<p>Hint: Look at your <code class="docutils literal notranslate"><span class="pre">Temperature_scaled</span></code> and <code class="docutils literal notranslate"><span class="pre">AirPressure_scaled</span></code> columns.</p>
+</li>
+<li><p>Plot the original Temperature and the scaled Temperature on two separate graphs. What differences do you notice?</p>
+<p>Hint: The shape should stay the same even though the scale changes.</p>
+</li>
+<li><p>Scale the Humidity column using the same method.</p>
+<p>Hint: Follow the pattern used for Temperature and Air Pressure.</p>
+</li>
+<li><p>If two columns have very different units, such as Celsius and hPa, why is scaling helpful before comparing them?</p>
+<p>Hint: Think about whether large numbers will overshadow small ones in a graph.</p>
+</li>
+</ol>
+<section id="solutions">
+<h3>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Minimum and maximum for the original columns.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AirPressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1010, 1014)
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>The minimum becomes 0. The maximum becomes 1. All other values fall between 0 and 1.</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p>Plotting original vs scaled Temperature.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Original Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Temperature_scaled&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scaled Temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5b2d1fac800204c76c47210eeafac0194d2f37a22c35aad7a16613226ce77570.png" src="../_images/5b2d1fac800204c76c47210eeafac0194d2f37a22c35aad7a16613226ce77570.png" />
+<img alt="../_images/eefb5b52d9021ac30c172848c835ed8676a264380f4102989fe74e2f3cf631f0.png" src="../_images/eefb5b52d9021ac30c172848c835ed8676a264380f4102989fe74e2f3cf631f0.png" />
+</div>
+</div>
+<p>The shape is the same. But notice the y-axis, the scales are different.</p>
+<ol class="arabic simple" start="4">
+<li><p>Scaling the Humidity column.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hum_min</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">hum_max</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity_scaled&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hum_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">hum_max</span> <span class="o">-</span> <span class="n">hum_min</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Humidity&quot;</span><span class="p">,</span> <span class="s2">&quot;Humidity_scaled&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Humidity</th>
+      <th>Humidity_scaled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>60</td>
+      <td>0.142857</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>62</td>
+      <td>0.285714</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>58</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>65</td>
+      <td>0.500000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>70</td>
+      <td>0.857143</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>72</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>68</td>
+      <td>0.714286</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>64</td>
+      <td>0.428571</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>59</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>61</td>
+      <td>0.214286</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Scaling is helpful because it removes the effect of large numbers overpowering small numbers. This allows different quantities to be compared fairly in the same graph.</p>
+</section>
+</section>
+<section id="reflection">
+<h2>Reflection<a class="headerlink" href="#reflection" title="Permalink to this heading">#</a></h2>
+<p>Think back on what you observed in this unit. When you first plotted Temperature and Air Pressure together, one line almost disappeared. After scaling, both lines became visible and easy to compare. This shows how important scale is when working with data.</p>
+<p>Ask yourself:</p>
+<ul class="simple">
+<li><p>What did scaling help you see that you could not see before?</p></li>
+<li><p>How did the idea of proportions from mathematics help you understand scaling?</p></li>
+<li><p>Where have you seen similar ideas of balance or equalisation in real life or in traditional practices?</p></li>
+<li><p>If you were given a new dataset tomorrow with very large and very small values, what would you do before comparing them?</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "amita-kapoor/BSB",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "mlp"
+        },
+        kernelOptions: {
+            name: "mlp",
+            path: "./class-9"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'mlp'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 2: The Data Detective</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit-4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 4: The Predictor</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-1-trying-to-compare-without-scaling">Activity 3.1: Trying to Compare Without Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-2-understanding-the-idea-of-scaling">Activity 3.2: Understanding the Idea of Scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animation-3-1">Animation 3.1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-3-performing-min-max-scaling-in-python">Activity 3.3: Performing Min Max Scaling in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-3-4-re-plotting-after-scaling">Activity 3.4: Re-plotting After Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-exercises">Practice Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bhartiya Shiksha Board
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="text-align: center;">
+  &copy; 2026 Bhartiya Shiksha Board. All rights reserved.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

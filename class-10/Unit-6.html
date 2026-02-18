@@ -1,0 +1,954 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Unit 6: The Data Journalist &#8212; Lab Manual - Data Analysis and Visualisation - Class IX</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'class-10/Unit-6';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Unit 5: The Trend Spotter" href="Unit-5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Lab Manual - Data Analysis and Visualisation - Class IX - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Class 9 Lab Manual</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../class-9/Unit-1.html">Unit 1: The Digital Lab Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-9/Unit-2.html">Unit 2: The Data Detective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-9/Unit-3.html">Unit 3: The Great Equaliser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-9/Unit-4.html">Unit 4: The Predictor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-9/Unit-5.html">Unit 5: The Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class-9/Unit-6.html">Unit-6: : The Storyteller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Class 10 Lab Manual</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit-1.html">Unit 1: The Modeler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-2.html">Unit 2: The Distribution Explorer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-3.html">Unit 3: The Physicist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-4.html">Unit 4: The Risk Analyst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit-5.html">Unit 5: The Trend Spotter</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 6: The Data Journalist</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/amita-kapoor/BSB/main?urlpath=lab/tree/./class-10/Unit-6.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/amita-kapoor/BSB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/amita-kapoor/BSB/issues/new?title=Issue%20on%20page%20%2Fclass-10/Unit-6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/class-10/Unit-6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 6: The Data Journalist</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-1-revisiting-the-dataset-with-a-purpose">Activity 6.1: Revisiting the Dataset with a Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-2-choosing-what-to-show">Activity 6.2: Choosing What to Show</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-3-creating-a-clear-visual-for-communication">Activity 6.3: Creating a Clear Visual for Communication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-4-adding-context-to-the-story">Activity 6.4: Adding Context to the Story</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-5-generating-a-data-story-automatically">Activity 6.5: Generating a Data Story Automatically</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-tasks">Practice Tasks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-optional">Reflection (Optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-real-world-data-come-from">Where Does Real-World Data Come From</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-and-temperature-data">Weather and Temperature Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rainfall-and-climate-data">Rainfall and Climate Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-from-different-cities-or-regions">Data from Different Cities or Regions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-6-the-data-journalist">
+<h1>Unit 6: The Data Journalist<a class="headerlink" href="#unit-6-the-data-journalist" title="Permalink to this heading">#</a></h1>
+<section id="learning-outcomes">
+<h2>Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Recognising the role of data presentation in communicating information.</p></li>
+<li><p>Explaining how context and limitations affect interpretation of data.</p></li>
+<li><p>Applying data summaries and visualisations to generate simple data-driven narratives.</p></li>
+<li><p>Analysing data outputs critically to avoid overstatement and misinterpretation.</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Numbers by themselves do not tell a story. A story emerges when data is selected carefully, analysed thoughtfully, and explained clearly. This is the role of a data journalist.</p>
+<p>A data journalist does not only calculate. They decide what data to use, what to show, what to compare, and how to explain results in a way that others can understand. In this unit, you will act as a data journalist by using temperature data to create a simple, evidence-based narrative.</p>
+</section>
+<section id="activity-6-1-revisiting-the-dataset-with-a-purpose">
+<h2>Activity 6.1: Revisiting the Dataset with a Purpose<a class="headerlink" href="#activity-6-1-revisiting-the-dataset-with-a-purpose" title="Permalink to this heading">#</a></h2>
+<p>In the previous unit, you collected long-term temperature data and studied trends. Now, instead of asking only mathematical questions, you will ask storytelling questions.</p>
+<p>Let us begin by loading the dataset you created earlier. The code below downloads and prepares the dataset, you used a similar code in Unit 5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Coordinates for the city (example: Delhi)</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">28.6139</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="mf">77.2090</span>
+
+<span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1975</span><span class="p">,</span> <span class="mi">2025</span><span class="p">))</span>
+<span class="n">average_temps</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-05-01&quot;</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-06-30&quot;</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;https://archive-api.open-meteo.com/v1/archive&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;?latitude=</span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2">&amp;longitude=</span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;&amp;start_date=</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2">&amp;end_date=</span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;&amp;daily=temperature_2m_max&quot;</span>
+        <span class="s2">&quot;&amp;timezone=Asia</span><span class="si">%2F</span><span class="s2">Kolkata&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="s2">&quot;daily&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+        <span class="n">temps</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;daily&quot;</span><span class="p">][</span><span class="s2">&quot;temperature_2m_max&quot;</span><span class="p">]</span>
+        <span class="n">average_temps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">temps</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">temps</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">average_temps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">df_trend</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;Year&quot;</span><span class="p">:</span> <span class="n">years</span><span class="p">,</span>
+    <span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">:</span> <span class="n">average_temps</span>
+<span class="p">})</span>
+
+<span class="n">df_trend</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>AverageMaxTemperature</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1975</td>
+      <td>39.521311</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1976</td>
+      <td>37.922951</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1977</td>
+      <td>38.209836</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1978</td>
+      <td>40.616393</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1979</td>
+      <td>39.308197</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This dataset contains:</p>
+<ul class="simple">
+<li><p>Year</p></li>
+<li><p>Average maximum temperature for selected months</p></li>
+</ul>
+<p>As a data journalist, your first task is to decide what question you want to answer.</p>
+<p><strong>Examples</strong>:</p>
+<ul class="simple">
+<li><p>Has the average summer temperature changed over time</p></li>
+<li><p>Are recent years different from earlier decades</p></li>
+<li><p>How large are year-to-year variations</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Learning Note</strong></p>
+<p>This dataset is created by downloading publicly available weather data
+and summarising it into yearly averages.
+Creating the dataset within the unit ensures that the analysis
+does not depend on work done in earlier units.</p>
+</div></blockquote>
+</section>
+<section id="activity-6-2-choosing-what-to-show">
+<h2>Activity 6.2: Choosing What to Show<a class="headerlink" href="#activity-6-2-choosing-what-to-show" title="Permalink to this heading">#</a></h2>
+<p>A good data story does not show everything. It shows what matters.</p>
+<p>Let us begin with a simple visual that compares early years with recent years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_period</span> <span class="o">=</span> <span class="n">df_trend</span><span class="p">[</span><span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1990</span><span class="p">]</span>
+<span class="n">recent_period</span> <span class="o">=</span> <span class="n">df_trend</span><span class="p">[</span><span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2010</span><span class="p">]</span>
+
+<span class="n">first_period</span><span class="p">[</span><span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">recent_period</span><span class="p">[</span><span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(39.36055327868852, 38.937704918032786)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This comparison helps you decide whether there is a noticeable difference between earlier and recent periods.</p>
+</section>
+<section id="activity-6-3-creating-a-clear-visual-for-communication">
+<h2>Activity 6.3: Creating a Clear Visual for Communication<a class="headerlink" href="#activity-6-3-creating-a-clear-visual-for-communication" title="Permalink to this heading">#</a></h2>
+<p>Now create a graph that can be understood by someone who has not seen the raw data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Yearly Average&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average Maximum Temperature (°C)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Change in Average Summer Maximum Temperature Over Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/dfbed9ff42dda779b7c554ab9fde8174a316921f11c5ec7706c58c152d3e4237.png" src="../_images/dfbed9ff42dda779b7c554ab9fde8174a316921f11c5ec7706c58c152d3e4237.png" />
+</div>
+</div>
+<p>As a data journalist, you should ask:</p>
+<ul class="simple">
+<li><p>Is the graph easy to read</p></li>
+<li><p>Are the axes clearly labelled</p></li>
+<li><p>Does the title explain what the graph shows</p></li>
+</ul>
+</section>
+<section id="activity-6-4-adding-context-to-the-story">
+<h2>Activity 6.4: Adding Context to the Story<a class="headerlink" href="#activity-6-4-adding-context-to-the-story" title="Permalink to this heading">#</a></h2>
+<p>Data does not exist in isolation. Context helps readers understand what they see.</p>
+<p>Think about factors that could affect temperature values:</p>
+<ul class="simple">
+<li><p>natural climate variability</p></li>
+<li><p>urban growth</p></li>
+<li><p>changes in land use</p></li>
+<li><p>weather patterns</p></li>
+</ul>
+<p>You do not need to prove causes. You only need to acknowledge uncertainty.</p>
+<blockquote>
+<div><p><strong>Learning Note</strong>
+A data journalist explains what the data shows and also explains its limits.
+Honest reporting includes uncertainty and does not overstate conclusions.</p>
+</div></blockquote>
+</section>
+<section id="activity-6-5-generating-a-data-story-automatically">
+<h2>Activity 6.5: Generating a Data Story Automatically<a class="headerlink" href="#activity-6-5-generating-a-data-story-automatically" title="Permalink to this heading">#</a></h2>
+<p>Instead of writing a story ourselves, we will let the computer summarise the data in simple sentences. This is similar to how news websites automatically generate short reports from data.</p>
+<p>The code below calculates key values and prints a short data-based narrative.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_year</span> <span class="o">=</span> <span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">end_year</span> <span class="o">=</span> <span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="n">early_avg</span> <span class="o">=</span> <span class="n">df_trend</span><span class="p">[</span><span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">start_year</span> <span class="o">+</span> <span class="mi">10</span><span class="p">][</span><span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">late_avg</span> <span class="o">=</span> <span class="n">df_trend</span><span class="p">[</span><span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">end_year</span> <span class="o">-</span> <span class="mi">10</span><span class="p">][</span><span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">difference</span> <span class="o">=</span> <span class="n">late_avg</span> <span class="o">-</span> <span class="n">early_avg</span>
+
+<span class="k">if</span> <span class="n">difference</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">trend_statement</span> <span class="o">=</span> <span class="s2">&quot;an increase&quot;</span>
+<span class="k">elif</span> <span class="n">difference</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">trend_statement</span> <span class="o">=</span> <span class="s2">&quot;a decrease&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">trend_statement</span> <span class="o">=</span> <span class="s2">&quot;very little change&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;From </span><span class="si">{</span><span class="n">start_year</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end_year</span><span class="si">}</span><span class="s2">, the data shows </span><span class="si">{</span><span class="n">trend_statement</span><span class="si">}</span><span class="s2"> in average summer maximum temperature.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average value in the early years was about </span><span class="si">{</span><span class="n">early_avg</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> °C.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average value in the recent years was about </span><span class="si">{</span><span class="n">late_avg</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> °C.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There is noticeable variation from year to year, which is common in real-world data.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>From 1975 to 2024, the data shows a decrease in average summer maximum temperature.
+The average value in the early years was about 39.32 °C.
+The average value in the recent years was about 38.64 °C.
+There is noticeable variation from year to year, which is common in real-world data.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-tasks">
+<h2>Practice Tasks<a class="headerlink" href="#practice-tasks" title="Permalink to this heading">#</a></h2>
+<p>Try the following tasks to strengthen your data storytelling skills.</p>
+<ol class="arabic simple">
+<li><p>Change the time periods used for comparison and observe how the story changes.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">early</span> <span class="o">=</span> <span class="n">df_trend</span><span class="p">[</span><span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1985</span><span class="p">][</span><span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">late</span> <span class="o">=</span> <span class="n">df_trend</span><span class="p">[</span><span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2005</span><span class="p">][</span><span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">early</span><span class="p">,</span> <span class="n">late</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(39.322205663189266, 38.828442622950824)
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Create a graph that shows only the last 20 years.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recent_20</span> <span class="o">=</span> <span class="n">df_trend</span><span class="p">[</span><span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">df_trend</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">recent_20</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">],</span> <span class="n">recent_20</span><span class="p">[</span><span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average Maximum Temperature (°C)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/005b7ad99a3cea657f062a60aa5823270046d4af277f7d595c83dcbb8a987b57.png" src="../_images/005b7ad99a3cea657f062a60aa5823270046d4af277f7d595c83dcbb8a987b57.png" />
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Add a trend line and explain what it summarises.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">recent_20</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">recent_20</span><span class="p">[</span><span class="s2">&quot;AverageMaxTemperature&quot;</span><span class="p">]</span>
+
+<span class="n">m</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Trend Line&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bf96b1bae4b5bb0bc964648bae2636e25be9bbab17b854a52f59e63b59887f02.png" src="../_images/bf96b1bae4b5bb0bc964648bae2636e25be9bbab17b854a52f59e63b59887f02.png" />
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Identify one limitation of the dataset used.</p></li>
+</ol>
+<blockquote>
+<div><p><em>Hint</em>: Example:</p>
+<ul class="simple">
+<li><p>Data covers only selected months</p></li>
+<li><p>A single city is analysed</p></li>
+<li><p>Year-to-year variability is high</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><p>Suggest one additional dataset that could strengthen the story.</p></li>
+</ol>
+<blockquote>
+<div><p><em>Hint</em>: Examples:</p>
+<ul class="simple">
+<li><p>rainfall data</p></li>
+<li><p>minimum night-time temperature</p></li>
+<li><p>data from another city</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="reflection-optional">
+<h2>Reflection (Optional)<a class="headerlink" href="#reflection-optional" title="Permalink to this heading">#</a></h2>
+<p>In this final unit, you moved beyond calculation to communication. You learned that data analysis is not complete until results are explained clearly and honestly.</p>
+<p>Reflect on the following:</p>
+<ul class="simple">
+<li><p>How did your role change from analyst to journalist</p></li>
+<li><p>Why is context important when presenting data</p></li>
+<li><p>What responsibility does a data journalist have</p></li>
+<li><p>How can data be misinterpreted if presented carelessly</p></li>
+</ul>
+</section>
+<section id="where-does-real-world-data-come-from">
+<h2>Where Does Real-World Data Come From<a class="headerlink" href="#where-does-real-world-data-come-from" title="Permalink to this heading">#</a></h2>
+<p>Data journalists and analysts rarely collect all data themselves. Most real-world data comes from public organisations that make their data openly available.</p>
+<p>Some reliable sources of data related to weather, climate, and geography are listed below.</p>
+<section id="weather-and-temperature-data">
+<h3>Weather and Temperature Data<a class="headerlink" href="#weather-and-temperature-data" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Open-Meteo: Provides free historical and current weather data such as temperature, rainfall, and wind for cities across the world. Website: <a class="reference external" href="https://open-meteo.com">https://open-meteo.com</a></p></li>
+<li><p>India Meteorological Department (IMD): Publishes official weather and climate information for India. Some datasets are available through government portals.</p></li>
+</ul>
+</section>
+<section id="rainfall-and-climate-data">
+<h3>Rainfall and Climate Data<a class="headerlink" href="#rainfall-and-climate-data" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://data.gov.in">data.gov.in</a> (India’s Open Data Portal): Hosts datasets from Indian government departments, including rainfall, climate, agriculture, and environment data. Website: <a class="reference external" href="https://data.gov.in">https://data.gov.in</a></p></li>
+<li><p>NOAA Climate Data (International): Provides long-term global climate datasets used by scientists worldwide. Website: <a class="reference external" href="https://www.ncei.noaa.gov">https://www.ncei.noaa.gov</a></p></li>
+</ul>
+</section>
+<section id="data-from-different-cities-or-regions">
+<h3>Data from Different Cities or Regions<a class="headerlink" href="#data-from-different-cities-or-regions" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Open-Meteo can be used for almost any city by changing latitude and longitude values.</p></li>
+<li><p><a class="reference external" href="http://data.gov.in">data.gov.in</a> provides district-wise and state-wise data for India.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Learning Note</strong>
+Knowing where data comes from is part of data literacy.
+A data journalist should always be able to say whether data is official,
+publicly available, and reliable.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "amita-kapoor/BSB",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./class-10"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit-5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 5: The Trend Spotter</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-1-revisiting-the-dataset-with-a-purpose">Activity 6.1: Revisiting the Dataset with a Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-2-choosing-what-to-show">Activity 6.2: Choosing What to Show</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-3-creating-a-clear-visual-for-communication">Activity 6.3: Creating a Clear Visual for Communication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-4-adding-context-to-the-story">Activity 6.4: Adding Context to the Story</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-6-5-generating-a-data-story-automatically">Activity 6.5: Generating a Data Story Automatically</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-tasks">Practice Tasks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-optional">Reflection (Optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-does-real-world-data-come-from">Where Does Real-World Data Come From</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-and-temperature-data">Weather and Temperature Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rainfall-and-climate-data">Rainfall and Climate Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-from-different-cities-or-regions">Data from Different Cities or Regions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bhartiya Shiksha Board
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="text-align: center;">
+  &copy; 2026 Bhartiya Shiksha Board. All rights reserved.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
