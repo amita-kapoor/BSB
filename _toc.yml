@@ -7,19 +7,19 @@ root: intro
 parts:
   - caption: Class 9 Lab Manual
     chapters:
-    - file: Unit-1
-    - file: Unit-2
-    - file: Unit-3
-    - file: Unit-4
-    - file: Unit-5
-    - file: Unit-6
+    - file: class-9/Unit-1  # <--- Add the folder name!
+    - file: class-9/Unit-2
+    - file: class-9/Unit-3
+    - file: class-9/Unit-4
+    - file: class-9/Unit-5
+    - file: class-9/Unit-6
   - caption: Class 10 Lab Manual
     chapters:
-    - file: Unit-1
-    - file: Unit-2
-    - file: Unit-3
-    - file: Unit-4
-    - file: Unit-5
-    - file: Unit-6
+    - file: class-10/Unit-1
+    - file: class-10/Unit-2
+    - file: class-10/Unit-3
+    - file: class-10/Unit-4
+    - file: class-10/Unit-5
+    - file: class-10/Unit-6
 
 
