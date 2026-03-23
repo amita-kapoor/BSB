@@ -47,6 +47,8 @@ html:
     <p style="text-align: center;">
       &copy; 2026 Bhartiya Shiksha Board. All rights reserved.
     </p>
+  extra_css:
+    - custom.css
 
   extra_head: |
     <style>
