@@ -43,6 +43,10 @@ thebe:
 html:
   use_issues_button: true
   use_repository_button: true
+
+  analytics:
+    google_analytics_id: G-WJXZRTV856
+    
   extra_footer: |
     <p style="text-align: center;">
       &copy; 2026 Bhartiya Shiksha Board. All rights reserved.
