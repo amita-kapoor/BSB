@@ -1,6 +1,5 @@
 name: deploy-book
 
-# Only run this when changes are pushed to the main branch
 on:
   push:
     branches:
@@ -12,36 +11,24 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    # Install Python
     - name: Set up Python 3.11
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: 3.11
 
-    # Install Jupyter Book and any other dependencies
     - name: Install dependencies
       run: |
         pip install -U jupyter-book
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    # Build the HTML
     - name: Build the book
       run: |
         jupyter-book build .
 
-    # Push the HTML to your gh-pages branch
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: _build/html
-
-    # Push the HTML to your gh-pages branch
-    - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: _build/html
-        jekyll: false
