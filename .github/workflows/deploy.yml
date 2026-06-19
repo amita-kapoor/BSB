@@ -20,12 +20,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -U jupyter-book
+        pip install -U "jupyter-book<2"
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Build the book
       run: |
-        jupyter-book build ./
+        jupyter-book build .
 
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3
