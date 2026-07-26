@@ -857,7 +857,7 @@ gives the probability of each category in an organised and readable form.</p>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Class&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Probability Distribution of Classes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Probability of Each Class&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -945,7 +945,7 @@ gives the probability of each category in an organised and readable form.</p>
 <li><p>Explain, using your results, how conditional probability helps in risk analysis.</p></li>
 </ol>
 <blockquote>
-<div><p><em>Hint</em>: Conditional probability helps risk analysis because it measures probability after including extra information. This helps us compare risk across conditions, not just in the full dataset.</p>
+<div><p><em>Hint</em>: Including extra information helps risk analysis because it lets us measure probability more precisely for a specific situation, not just the dataset as a whole.</p>
 </div></blockquote>
 </section>
 <section id="optional-advanced-exercise-heat-risk-using-real-temperature-data">
@@ -1196,12 +1196,12 @@ or dates may not appear in the proper order.</p>
 </section>
 <section id="reflection-optional">
 <h2>Reflection (Optional)<a class="headerlink" href="#reflection-optional" title="Link to this heading">#</a></h2>
-<p>In this unit, you used real data to compute probabilities and conditional probabilities. You observed that risk changes when you add a condition, and that conditional probability gives more useful information than an overall probability.</p>
+<p>In this unit, you used real data to compute probabilities and conditional probabilities. You observed that risk changes when you add a condition, and that probability estimates become more useful once extra information is included, compared to the overall probability alone.</p>
 <p>Reflect on the following:</p>
 <ul class="simple">
 <li><p>How did probability help you describe uncertainty in the dataset</p></li>
 <li><p>How did the condition change the probability, and why</p></li>
-<li><p>Why is conditional probability more useful in decision making</p></li>
+<li><p>Why is probability that accounts for extra information more useful in decision making</p></li>
 <li><p>Where might a risk analyst use similar ideas in real life</p></li>
 </ul>
 </section>
