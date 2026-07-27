@@ -891,7 +891,7 @@ Each sample belongs to one of three categories labelled as 0, 1, or 2.</p>
 </div>
 </div>
 </div>
-<p>Now calculate the conditional probability.</p>
+<p>Now calculate this probability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob_class0_given_high_alcohol</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">high_alcohol</span><span class="p">[</span><span class="n">high_alcohol</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">high_alcohol</span><span class="p">)</span>
@@ -905,7 +905,7 @@ Each sample belongs to one of three categories labelled as 0, 1, or 2.</p>
 </div>
 </div>
 </div>
-<p>Compare this with the overall probability of class 0 from Activity 4.2. If the conditional probability is higher, then high alcohol increases the likelihood of class 0 in this dataset. If it is lower, then high alcohol decreases it.</p>
+<p>Compare this with the overall probability of class 0 from Activity 4.2. If this probability is higher, then high alcohol increases the likelihood of class 0 in this dataset. If it is lower, then high alcohol decreases it.</p>
 <p>This is a simple form of risk analysis. We are analysing how risk changes when we add a condition.</p>
 </section>
 <section id="activity-4-4-comparing-risk-across-multiple-conditions">
@@ -985,7 +985,7 @@ Each sample belongs to one of three categories labelled as 0, 1, or 2.</p>
 </table>
 </div><br><label><b>dtype:</b> float64</label></div></div>
 </div>
-<p>This shows how probability is distributed across classes when alcohol is high.</p>
+<p>This shows how likely each class is when alcohol is high.</p>
 <blockquote>
 <div><p><strong>Learning Note</strong></p>
 <p>The function <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> is used to count how many times each category appears in a column.
@@ -1059,7 +1059,7 @@ gives the probability of each category in an organised and readable form.</p>
 </div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Change the threshold to 12.5 and repeat the conditional probability for class 0.</p></li>
+<li><p>Change the threshold to 12.5 and repeat the probability calculation for class 0.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1093,7 +1093,7 @@ gives the probability of each category in an organised and readable form.</p>
 </div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>Explain, using your results, how conditional probability helps in risk analysis.</p></li>
+<li><p>Explain, using your results, how using extra information to calculate probability helps in risk analysis.</p></li>
 </ol>
 <blockquote>
 <div><p><em>Hint</em>: Including extra information helps risk analysis because it lets us measure probability more precisely for a specific situation, not just the dataset as a whole.</p>
@@ -1517,7 +1517,7 @@ or dates may not appear in the proper order.</p>
 </section>
 <section id="reflection-optional">
 <h2>Reflection (Optional)<a class="headerlink" href="#reflection-optional" title="Link to this heading">#</a></h2>
-<p>In this unit, you used real data to compute probabilities and conditional probabilities. You observed that risk changes when you add a condition, and that probability estimates become more useful once extra information is included, compared to the overall probability alone.</p>
+<p>In this unit, you used real data to compute probabilities, both with and without extra information.. You observed that risk changes when you add a condition, and that probability estimates become more useful once extra information is included, compared to the overall probability alone.</p>
 <p>Reflect on the following:</p>
 <ul class="simple">
 <li><p>How did probability help you describe uncertainty in the dataset</p></li>
